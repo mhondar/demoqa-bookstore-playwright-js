@@ -18,7 +18,7 @@ Each test case includes only:
 
 ---
 
-## TC-SMK-SRCH-046
+## TC-SMK-SRCH-042
 
 **Title:**
 Validate search input is visible
@@ -44,7 +44,7 @@ Validate search input is visible
 
 ---
 
-## TC-CRT-SRCH-047
+## TC-CRT-SRCH-043
 
 **Title:**
 Validate search with valid exact title
@@ -72,7 +72,7 @@ Validate search with valid exact title
 
 ---
 
-## TC-REG-SRCH-048
+## TC-REG-SRCH-044
 
 **Title:**
 Validate search with valid partial title
@@ -100,7 +100,7 @@ Validate search with valid partial title
 
 ---
 
-## TC-REG-SRCH-049
+## TC-REG-SRCH-045
 
 **Title:**
 Validate search by author
@@ -128,7 +128,7 @@ Validate search by author
 
 ---
 
-## TC-CRT-SRCH-050
+## TC-CRT-SRCH-046
 
 **Title:**
 Validate search with no matches
@@ -156,7 +156,7 @@ Validate search with no matches
 
 ---
 
-## TC-REG-SRCH-051
+## TC-REG-SRCH-047
 
 **Title:**
 Validate clearing search restores the list

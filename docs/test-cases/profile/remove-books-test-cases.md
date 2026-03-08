@@ -18,7 +18,7 @@ Each test case includes only:
 
 ---
 
-## TC-REG-PR-069
+## TC-REG-PR-068
 
 **Title:**
 Validate removing a single book
@@ -48,7 +48,7 @@ Validate removing a single book
 
 ---
 
-## TC-REG-PR-070
+## TC-REG-PR-069
 
 **Title:**
 Validate cancel single-book deletion
@@ -77,7 +77,7 @@ Validate cancel single-book deletion
 
 ---
 
-## TC-REG-PR-071
+## TC-REG-PR-070
 
 **Title:**
 Validate removing all books if supported
@@ -107,7 +107,7 @@ Validate removing all books if supported
 
 ---
 
-## TC-REG-PR-072
+## TC-REG-PR-071
 
 **Title:**
 Validate cancel delete-all action
@@ -137,7 +137,7 @@ Validate cancel delete-all action
 
 ---
 
-## TC-REG-PR-073
+## TC-REG-PR-072
 
 **Title:**
 Validate delete controls are safe on empty collection

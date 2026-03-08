@@ -9,38 +9,38 @@
       "exactTitle": {
         "value": "Git Pocket Guide",
         "expectedBookKey": "gitPocketGuide",
-        "mappedTestCases": ["TC-CRT-SRCH-047", "TC-CRT-BS-038", "TC-CRT-E2E-003"]
+        "mappedTestCases": ["TC-CRT-SRCH-043", "TC-CRT-BS-031", "TC-CRT-E2E-027"]
       },
       "author": {
         "value": "Richard E. Silverman",
         "expectedBookKey": "gitPocketGuide",
-        "mappedTestCases": ["TC-REG-SRCH-049"]
+        "mappedTestCases": ["TC-REG-SRCH-045"]
       }
     },
     "partialSearchTerms": {
       "partialTitle": {
         "value": "JavaScript",
         "expectedBookKey": "learningJavaScriptDesignPatterns",
-        "mappedTestCases": ["TC-REG-SRCH-048"]
+        "mappedTestCases": ["TC-REG-SRCH-044"]
       }
     },
     "invalidSearchTerms": {
       "noResults": {
         "value": "NonExistingAutomationBook",
         "expectedVisibleResults": 0,
-        "mappedTestCases": ["TC-CRT-SRCH-050", "TC-CRT-BS-039", "TC-CRT-E2E-004"]
+        "mappedTestCases": ["TC-CRT-SRCH-046", "TC-CRT-BS-032", "TC-CRT-E2E-028"]
       }
     },
     "emptySearchTerms": {
       "emptyString": {
         "value": "",
         "expectedBehavior": "restore-default-list",
-        "mappedTestCases": ["TC-REG-SRCH-051"]
+        "mappedTestCases": ["TC-REG-SRCH-047"]
       },
       "whitespace": {
         "value": "   ",
         "expectedBehavior": "treat-as-empty-or-no-filter",
-        "mappedTestCases": ["TC-REG-SRCH-051"]
+        "mappedTestCases": ["TC-REG-SRCH-047"]
       }
     }
   },
@@ -58,7 +58,7 @@
         "bookKey": "gitPocketGuide",
         "title": "Git Pocket Guide",
         "isbn": "9781449325862",
-        "mappedTestCases": ["TC-REG-BD-045", "TC-REG-E2E-012"]
+        "mappedTestCases": ["TC-REG-BD-041", "TC-REG-E2E-035"]
       },
       "secondaryAddBook": {
         "bookKey": "learningJavaScriptDesignPatterns",
@@ -72,12 +72,12 @@
         "bookKey": "gitPocketGuide",
         "title": "Git Pocket Guide",
         "seededProfileStateKey": "seededCollection",
-        "mappedTestCases": ["TC-REG-PR-069", "TC-REG-PR-070", "TC-REG-E2E-014"]
+        "mappedTestCases": ["TC-REG-PR-068", "TC-REG-PR-069", "TC-REG-E2E-067"]
       },
       "deleteAllBooks": {
         "bookKeys": ["gitPocketGuide", "learningJavaScriptDesignPatterns"],
         "seededProfileStateKey": "seededCollection",
-        "mappedTestCases": ["TC-REG-PR-071", "TC-REG-PR-072"]
+        "mappedTestCases": ["TC-REG-PR-070", "TC-REG-PR-071"]
       }
     },
     "expectedInitialProfileState": {
@@ -89,14 +89,14 @@
         "knownBookTitle": "Git Pocket Guide",
         "noMatchTerm": "NonExistingCollectionBook",
         "emptyStateExpected": false,
-        "mappedTestCases": ["TC-CRT-PR-063", "TC-REG-PR-065", "TC-REG-PR-066", "TC-REG-PR-069", "TC-REG-PR-070", "TC-REG-PR-071", "TC-REG-PR-072"]
+        "mappedTestCases": ["TC-CRT-PR-061", "TC-REG-PR-063", "TC-REG-PR-064", "TC-REG-PR-068", "TC-REG-PR-069", "TC-REG-PR-070", "TC-REG-PR-071"]
       },
       "emptyCollection": {
         "isAuthenticated": true,
         "totalBooks": 0,
         "visibleBookKeys": [],
         "emptyStateExpected": true,
-        "mappedTestCases": ["TC-REG-PR-067", "TC-REG-PR-073"]
+        "mappedTestCases": ["TC-REG-PR-065", "TC-REG-PR-072"]
       }
     }
   },

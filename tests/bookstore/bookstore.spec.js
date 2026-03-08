@@ -4,7 +4,7 @@ const { ValidationHelpers } = require('../../utils');
 const booksData = require('../../test-data/books.json');
 
 test.describe('Book Store', () => {
-  test('TC-SMK-E2E-001 Access Book Store @smoke @bookstore', async ({
+  test('TC-SMK-E2E-025 Access Book Store @smoke @bookstore', async ({
     page,
   }) => {
     const bookStorePage = new BookStorePage(page);
@@ -40,7 +40,7 @@ test.describe('Book Store', () => {
     });
   });
 
-  test('TC-SMK-E2E-002 View Book Catalog @smoke @bookstore', async ({
+  test('TC-SMK-E2E-026 View Book Catalog @smoke @bookstore', async ({
     page,
   }) => {
     const bookStorePage = new BookStorePage(page);
@@ -83,7 +83,7 @@ test.describe('Book Store', () => {
     });
   });
 
-  test('TC-CRT-E2E-003 Search Books by Exact Title @critical @bookstore @search', async ({
+  test('TC-CRT-E2E-027 Search Books by Exact Title @critical @bookstore @search', async ({
     page,
   }) => {
     const bookStorePage = new BookStorePage(page);

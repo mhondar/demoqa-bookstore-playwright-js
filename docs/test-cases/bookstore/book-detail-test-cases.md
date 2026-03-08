@@ -18,7 +18,7 @@ Each test case includes only:
 
 ---
 
-## TC-CRT-BD-041
+## TC-CRT-BD-037
 
 **Title:**
 Validate book detail page loads from catalog selection
@@ -49,7 +49,7 @@ Validate book detail page loads from catalog selection
 
 ---
 
-## TC-CRT-BD-042
+## TC-CRT-BD-038
 
 **Title:**
 Validate detail page shows expected book information
@@ -79,7 +79,7 @@ Validate detail page shows expected book information
 
 ---
 
-## TC-REG-BD-043
+## TC-REG-BD-039
 
 **Title:**
 Validate back navigation to Book Store
@@ -107,7 +107,7 @@ Validate back navigation to Book Store
 
 ---
 
-## TC-REG-BD-044
+## TC-REG-BD-040
 
 **Title:**
 Validate add book to collection without login is blocked
@@ -136,7 +136,7 @@ Validate add book to collection without login is blocked
 
 ---
 
-## TC-REG-BD-045
+## TC-REG-BD-041
 
 **Title:**
 Validate add book to collection with authenticated user

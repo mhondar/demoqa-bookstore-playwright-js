@@ -18,7 +18,7 @@ Each test case includes only:
 
 ---
 
-## TC-SMK-RG-026
+## TC-SMK-RG-015
 
 **Title:**
 Validate registration page loads
@@ -47,7 +47,7 @@ Validate registration page loads
 
 ---
 
-## TC-SMK-RG-027
+## TC-SMK-RG-016
 
 **Title:**
 Validate registration form controls are visible
@@ -77,7 +77,7 @@ Validate registration form controls are visible
 
 ---
 
-## TC-CRT-RG-028
+## TC-CRT-RG-017
 
 **Title:**
 Validate navigation from registration back to login
@@ -104,7 +104,7 @@ Validate navigation from registration back to login
 
 ---
 
-## TC-CRT-RG-029
+## TC-CRT-RG-018
 
 **Title:**
 Validate registration with valid unique data
@@ -136,7 +136,7 @@ Validate registration with valid unique data
 
 ---
 
-## TC-REG-RG-030
+## TC-REG-RG-019
 
 **Title:**
 Validate registration with empty first name
@@ -166,7 +166,7 @@ Validate registration with empty first name
 
 ---
 
-## TC-REG-RG-031
+## TC-REG-RG-020
 
 **Title:**
 Validate registration with empty last name
@@ -197,7 +197,7 @@ Validate registration with empty last name
 
 ---
 
-## TC-REG-RG-032
+## TC-REG-RG-021
 
 **Title:**
 Validate registration with empty username
@@ -228,7 +228,7 @@ Validate registration with empty username
 
 ---
 
-## TC-REG-RG-033
+## TC-REG-RG-022
 
 **Title:**
 Validate registration with empty password
@@ -260,7 +260,7 @@ Validate registration with empty password
 
 ---
 
-## TC-REG-RG-034
+## TC-REG-RG-023
 
 **Title:**
 Validate registration with invalid password format
@@ -290,7 +290,7 @@ Validate registration with invalid password format
 
 ---
 
-## TC-REG-RG-035
+## TC-REG-RG-024
 
 **Title:**
 Validate registration with duplicate username

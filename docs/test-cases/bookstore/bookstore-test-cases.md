@@ -18,7 +18,7 @@ It keeps only the minimum information needed for future automation:
 
 ---
 
-## TC-SMK-BS-036
+## TC-SMK-BS-029
 
 **Title:**
 Validate book list loads
@@ -47,7 +47,7 @@ Validate book list loads
 
 ---
 
-## TC-SMK-BS-037
+## TC-SMK-BS-030
 
 **Title:**
 Validate visible number of records
@@ -76,7 +76,7 @@ Validate visible number of records
 
 ---
 
-## TC-CRT-BS-038
+## TC-CRT-BS-031
 
 **Title:**
 Validate search with valid text
@@ -106,7 +106,7 @@ Validate search with valid text
 
 ---
 
-## TC-CRT-BS-039
+## TC-CRT-BS-032
 
 **Title:**
 Validate search with no matches
@@ -134,7 +134,7 @@ Validate search with no matches
 
 ---
 
-## TC-CRT-BS-040
+## TC-CRT-BS-033
 
 **Title:**
 Validate navigation to detail page

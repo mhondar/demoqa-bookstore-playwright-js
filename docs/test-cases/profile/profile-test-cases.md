@@ -18,7 +18,7 @@ Each test case includes only:
 
 ---
 
-## TC-SMK-PR-057
+## TC-SMK-PR-055
 
 **Title:**
 Validate unauthenticated profile access shows guidance
@@ -47,7 +47,7 @@ Validate unauthenticated profile access shows guidance
 
 ---
 
-## TC-SMK-PR-058
+## TC-SMK-PR-056
 
 **Title:**
 Validate login link is available from unauthenticated profile
@@ -74,7 +74,7 @@ Validate login link is available from unauthenticated profile
 
 ---
 
-## TC-SMK-PR-059
+## TC-SMK-PR-057
 
 **Title:**
 Validate register link is available from unauthenticated profile
@@ -101,7 +101,7 @@ Validate register link is available from unauthenticated profile
 
 ---
 
-## TC-CRT-PR-060
+## TC-CRT-PR-058
 
 **Title:**
 Validate navigation from unauthenticated profile to login
@@ -129,7 +129,7 @@ Validate navigation from unauthenticated profile to login
 
 ---
 
-## TC-CRT-PR-061
+## TC-CRT-PR-059
 
 **Title:**
 Validate navigation from unauthenticated profile to registration
@@ -157,7 +157,7 @@ Validate navigation from unauthenticated profile to registration
 
 ---
 
-## TC-CRT-PR-062
+## TC-CRT-PR-060
 
 **Title:**
 Validate access to authenticated profile
@@ -186,7 +186,7 @@ Validate access to authenticated profile
 
 ---
 
-## TC-CRT-PR-063
+## TC-CRT-PR-061
 
 **Title:**
 Validate viewing book collection
@@ -214,7 +214,7 @@ Validate viewing book collection
 
 ---
 
-## TC-CRT-PR-064
+## TC-CRT-PR-062
 
 **Title:**
 Validate logout from profile
@@ -242,7 +242,7 @@ Validate logout from profile
 
 ---
 
-## TC-REG-PR-065
+## TC-REG-PR-063
 
 **Title:**
 Validate search within profile collection
@@ -271,7 +271,7 @@ Validate search within profile collection
 
 ---
 
-## TC-REG-PR-066
+## TC-REG-PR-064
 
 **Title:**
 Validate profile collection search with no matches
@@ -300,7 +300,7 @@ Validate profile collection search with no matches
 
 ---
 
-## TC-REG-PR-067
+## TC-REG-PR-065
 
 **Title:**
 Validate empty collection state is handled safely
@@ -328,7 +328,7 @@ Validate empty collection state is handled safely
 
 ---
 
-## TC-REG-PR-068
+## TC-REG-PR-066
 
 **Title:**
 Validate navigation from profile back to Book Store
