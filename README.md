@@ -129,10 +129,11 @@ demoqa-bookstore-playwright-js
 │
 ├── pages
 │   ├── BasePage.js
-│   ├── LoginPage.js
 │   ├── BookStorePage.js
 │   ├── BookDetailPage.js
-│   └── ProfilePage.js
+│   ├── LoginPage.js
+│   ├── ProfilePage.js
+│   └── SidebarNavigation.js
 │
 ├── fixtures
 │

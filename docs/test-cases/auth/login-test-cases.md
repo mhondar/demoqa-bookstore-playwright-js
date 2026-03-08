@@ -146,15 +146,17 @@ Validate login with empty username
 
 **Test data:**
 - empty username
-- valid or placeholder password
+- valid password
 
 **Steps:**
 - leave username empty
-- enter password
+- enter a valid password
 - submit the login form
 
 **Expected result:**
-- submission is blocked or validation is shown
+- submission is blocked
+- focus returns to the username input
+- username input is marked invalid / highlighted in red
 - user remains on the Login page
 
 **Priority:**
@@ -175,16 +177,18 @@ Validate login with empty password
 - user is on the Login page
 
 **Test data:**
-- valid or placeholder username
+- valid username
 - empty password
 
 **Steps:**
-- enter username
+- enter a valid username
 - leave password empty
 - submit the login form
 
 **Expected result:**
-- submission is blocked or validation is shown
+- submission is blocked
+- password input is marked invalid / highlighted in red
+- username remains populated
 - user remains on the Login page
 
 **Priority:**

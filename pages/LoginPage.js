@@ -11,6 +11,7 @@ class LoginPage extends BasePage {
     this.usernameInput = page.locator('#userName');
     this.passwordInput = page.locator('#password');
     this.loginButton = page.locator('#login');
+    this.newUserButton = page.getByRole('button', { name: /^new user$/i });
     this.errorMessage = page.locator('#name');
   }
 
@@ -34,6 +35,10 @@ class LoginPage extends BasePage {
 
   async submit() {
     await this.loginButton.click();
+  }
+
+  async clickNewUser() {
+    await this.newUserButton.click();
   }
 
   async login(username, password) {

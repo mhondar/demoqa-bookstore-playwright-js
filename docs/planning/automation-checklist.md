@@ -9,11 +9,12 @@ This checklist tracks which documented test cases are already automated in execu
 - `[ ]` Not automated yet
 
 **Current status**
-- Automated: `8 / 75`
-- Pending: `67 / 75`
+- Automated: `29 / 75`
+- Pending: `46 / 75`
 
 **Automation sources reviewed**
 - `tests/auth/login.spec.js`
+- `tests/auth/registration.spec.js`
 - `tests/bookstore/bookstore.spec.js`
 
 ---
@@ -27,26 +28,26 @@ This checklist tracks which documented test cases are already automated in execu
 - [x] `TC-REG-E2E-003` — Login with Empty Fields
 - [x] `TC-SMK-LG-004` — Validate login page loads
 - [x] `TC-SMK-LG-005` — Validate login form controls are visible
-- [ ] `TC-CRT-LG-006` — Validate login with invalid password
-- [ ] `TC-CRT-LG-007` — Validate navigation from login to registration
-- [ ] `TC-REG-LG-008` — Validate login with empty username
-- [ ] `TC-REG-LG-009` — Validate login with empty password
-- [ ] `TC-REG-LG-010` — Validate login with empty fields
-- [ ] `TC-CRT-LG-011` — Validate logout
-- [ ] `TC-REG-LG-012` — Validate navigation from login back to Book Store
+- [x] `TC-CRT-LG-006` — Validate login with invalid password
+- [x] `TC-CRT-LG-007` — Validate navigation from login to registration
+- [x] `TC-REG-LG-008` — Validate login with empty username
+- [x] `TC-REG-LG-009` — Validate login with empty password
+- [x] `TC-REG-LG-010` — Validate login with empty fields (covered by `TC-REG-E2E-003`)
+- [x] `TC-CRT-LG-011` — Validate logout
+- [x] `TC-REG-LG-012` — Validate navigation from login back to Book Store
 
 ### Registration
 
-- [ ] `TC-SMK-RG-013` — Validate registration page loads
-- [ ] `TC-SMK-RG-014` — Validate registration form controls are visible
-- [ ] `TC-CRT-RG-015` — Validate navigation from registration back to login
-- [ ] `TC-CRT-RG-016` — Validate registration with valid unique data
-- [ ] `TC-REG-RG-017` — Validate registration with empty first name
-- [ ] `TC-REG-RG-018` — Validate registration with empty last name
-- [ ] `TC-REG-RG-019` — Validate registration with empty username
-- [ ] `TC-REG-RG-020` — Validate registration with empty password
-- [ ] `TC-REG-RG-021` — Validate registration with invalid password format
-- [ ] `TC-REG-RG-022` — Validate registration with duplicate username
+- [x] `TC-SMK-RG-013` — Validate registration page loads
+- [x] `TC-SMK-RG-014` — Validate registration form controls are visible
+- [x] `TC-CRT-RG-015` — Validate navigation from registration back to login
+- [x] `TC-CRT-RG-016` — Validate registration with valid unique data (implemented with `@error` tag and skipped due to known runtime instability in the public environment)
+- [x] `TC-REG-RG-017` — Validate registration with empty first name
+- [x] `TC-REG-RG-018` — Validate registration with empty last name
+- [x] `TC-REG-RG-019` — Validate registration with empty username
+- [x] `TC-REG-RG-020` — Validate registration with empty password
+- [x] `TC-REG-RG-021` — Validate registration with invalid password format
+- [x] `TC-REG-RG-022` — Validate registration with duplicate username (subject to successful registration submission; because the public registration flow is weak and error-prone, this case has the same effect by functional dependency and skips when CAPTCHA/gate prevents the request from being sent)
 
 ---
 
@@ -57,10 +58,10 @@ This checklist tracks which documented test cases are already automated in execu
 - [x] `TC-SMK-E2E-023` — Access Book Store
 - [x] `TC-SMK-E2E-024` — View Book Catalog
 - [x] `TC-CRT-E2E-025` — Search Books by Exact Title
-- [ ] `TC-CRT-E2E-026` — Search with No Results
-- [ ] `TC-SMK-BS-027` — Validate book list loads
-- [ ] `TC-SMK-BS-028` — Validate visible number of records
-- [ ] `TC-CRT-BS-029` — Validate search with valid text
+- [x] `TC-CRT-E2E-026` — Search with No Results
+- [x] `TC-SMK-BS-027` — Validate book list loads
+- [x] `TC-SMK-BS-028` — Validate visible number of records
+- [x] `TC-CRT-BS-029` — Validate search with valid text
 - [ ] `TC-CRT-BS-030` — Validate search with no matches
 - [ ] `TC-CRT-BS-031` — Validate navigation to detail page
 

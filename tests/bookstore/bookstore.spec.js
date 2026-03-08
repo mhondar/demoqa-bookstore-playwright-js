@@ -121,4 +121,161 @@ test.describe('Book Store', () => {
       ).toBeTruthy();
     });
   });
+
+  test('TC-CRT-E2E-026 Search with No Results @critical @bookstore @search', async ({
+    page,
+  }) => {
+    const bookStorePage = new BookStorePage(page);
+    const noResultsTerm = booksData.searchData.invalidSearchTerms.noResults.value;
+    const expectedVisibleResults =
+      booksData.searchData.invalidSearchTerms.noResults.expectedVisibleResults;
+
+    await test.step('Open Book Store page', async () => {
+      await bookStorePage.goTo();
+      await bookStorePage.waitForCatalogLoaded();
+    });
+
+    await test.step('Enter a non-existing term in search input', async () => {
+      await bookStorePage.search(noResultsTerm);
+    });
+
+    await test.step('Verify no matching rows remain visible and layout stays stable', async () => {
+      const visibleTitles = await bookStorePage.getVisibleBookTitles();
+      const visibleRowCount = await bookStorePage.getVisibleBookRowCount();
+
+      expect(
+        visibleRowCount,
+        'A non-existing search term should leave zero visible catalog rows'
+      ).toBe(expectedVisibleResults);
+      expect(
+        visibleTitles,
+        'A non-existing search term should not leave any visible book titles'
+      ).toEqual([]);
+
+      await ValidationHelpers.expectVisible(
+        bookStorePage.catalogContainer,
+        'Book Store catalog container should remain visible after a no-results search'
+      );
+      await ValidationHelpers.expectVisible(
+        bookStorePage.catalogTable,
+        'Book Store table layout should remain visible after a no-results search'
+      );
+      await ValidationHelpers.expectVisible(
+        bookStorePage.searchInput,
+        'Search input should remain visible after a no-results search'
+      );
+      await expect(
+        bookStorePage.searchInput,
+        'Search input should preserve the entered no-results term'
+      ).toHaveValue(noResultsTerm);
+    });
+  });
+
+  test('TC-SMK-BS-027 Validate book list loads @smoke @bookstore', async ({
+    page,
+  }) => {
+    const bookStorePage = new BookStorePage(page);
+
+    await test.step('Open Book Store page and wait for the list to load', async () => {
+      await bookStorePage.goTo();
+      await bookStorePage.waitForCatalogLoaded();
+    });
+
+    await test.step('Verify the book list area is visible', async () => {
+      await ValidationHelpers.expectUrlContains(
+        page,
+        bookStorePage.booksPath,
+        'Book Store URL should contain the books path when the list loads'
+      );
+      await ValidationHelpers.expectVisible(
+        bookStorePage.catalogContainer,
+        'Book Store catalog container should be visible after the page loads'
+      );
+      await ValidationHelpers.expectVisible(
+        bookStorePage.catalogBody,
+        'Book list body should be visible after the page loads'
+      );
+      await ValidationHelpers.expectVisible(
+        bookStorePage.bookRows.first(),
+        'At least the first book row should be visible when the list loads'
+      );
+    });
+  });
+
+  test('TC-SMK-BS-028 Validate visible number of records @smoke @bookstore', async ({
+    page,
+  }) => {
+    const bookStorePage = new BookStorePage(page);
+
+    await test.step('Open Book Store page and wait for the list to load', async () => {
+      await bookStorePage.goTo();
+      await bookStorePage.waitForCatalogLoaded();
+    });
+
+    await test.step('Count visible rows and verify the number is stable', async () => {
+      const initialVisibleRowCount = await bookStorePage.getVisibleBookRowCount();
+      const repeatedVisibleRowCount = await bookStorePage.getVisibleBookRowCount();
+
+      expect(
+        initialVisibleRowCount,
+        'Book Store should display at least one visible record after the list loads'
+      ).toBeGreaterThan(0);
+      expect(
+        repeatedVisibleRowCount,
+        'Visible record count should remain stable when measured again without interaction'
+      ).toBe(initialVisibleRowCount);
+
+      await ValidationHelpers.expectVisible(
+        bookStorePage.catalogBody,
+        'Book list body should remain visible while counting the rendered records'
+      );
+    });
+  });
+
+  test('TC-CRT-BS-029 Validate search with valid text @critical @bookstore @search', async ({
+    page,
+  }) => {
+    const bookStorePage = new BookStorePage(page);
+    const exactTitle = booksData.searchData.validSearchTerms.exactTitle.value;
+
+    await test.step('Open Book Store page and verify search is available', async () => {
+      await bookStorePage.goTo();
+      await bookStorePage.waitForCatalogLoaded();
+
+      await ValidationHelpers.expectVisible(
+        bookStorePage.searchInput,
+        'Search input should be visible before entering a valid search term'
+      );
+    });
+
+    await test.step('Enter a valid known search term', async () => {
+      await bookStorePage.search(exactTitle);
+    });
+
+    await test.step('Verify the expected book remains visible and unrelated rows are filtered out', async () => {
+      const visibleTitles = await bookStorePage.getVisibleBookTitles();
+      const visibleRowCount = await bookStorePage.getVisibleBookRowCount();
+
+      await ValidationHelpers.expectVisible(
+        bookStorePage.getVisibleBookRowByTitle(exactTitle),
+        'The expected book should remain visible after searching with valid text'
+      );
+      expect(
+        visibleRowCount,
+        'Searching with valid text should leave at least one visible row'
+      ).toBeGreaterThan(0);
+      expect(
+        visibleTitles,
+        'The expected valid title should appear in the filtered results'
+      ).toContain(exactTitle);
+      expect(
+        visibleTitles.every(title => title === exactTitle),
+        'Visible rows should be limited to the matching valid search result'
+      ).toBeTruthy();
+      await expect(
+        bookStorePage.searchInput,
+        'Search input should preserve the valid search term after filtering'
+      ).toHaveValue(exactTitle);
+    });
+  });
 });

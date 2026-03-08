@@ -10,6 +10,7 @@ This directory contains Page Object Model (POM) classes for the DemoQA Book Stor
 - Use `PascalCase` for file/class names: `LoginPage.js`, `BookStorePage.js`.
 - Keep constructors minimal: only store `page` and initialize locators.
 - Use `BasePage` only for truly shared behavior (navigation, common waits).
+- Shared UI components such as the left menu/sidebar can have their own object (example: `SidebarNavigation.js`) when the controls actually belong to that component.
 
 ### 2) What belongs inside a page class
 
@@ -78,6 +79,7 @@ await expect(loginPage.errorMessage).toContainText('Invalid username or password
 ## Suggested Structure
 
 - `BasePage.js` - Shared UI actions only.
+- `SidebarNavigation.js` - Shared left-menu/sidebar navigation actions.
 - `LoginPage.js` - Login UI locators and login actions.
 - `BookStorePage.js` - Search/filter/list actions.
 - `BookDetailPage.js` - Book detail interactions.

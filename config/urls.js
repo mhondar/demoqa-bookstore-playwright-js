@@ -8,6 +8,7 @@ const URLS = {
 
   // Authentication URLs
   login: '/login',
+  register: '/register',
   profile: '/profile',
 
   // Book-related URLs

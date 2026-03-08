@@ -80,17 +80,22 @@ Expected in destructive Profile flows:
 
 ### Registration CAPTCHA status
 Current finding:
-- CAPTCHA was **not observed** during manual review or page-content fetch for `/register`
+- reCAPTCHA can appear on `/register` during live verification
+- manual revalidation indicates the CAPTCHA behavior is intermittent/random rather than permanently present
+- some automated submit attempts may not proceed to an account-creation request when that gate appears
+- in practical terms, the public registration flow may sometimes register successfully and sometimes not, even with the same automation path and valid unique data
 
 **Current interpretation:**
-- registration may be automatable end to end in the current environment
+- end-to-end successful registration in the public environment is unstable and environment-dependent
 
 **Limitation:**
-- this must still be revalidated during real implementation because environment behavior may change
+- this may change again if the public site behavior changes or a controlled environment is provided
 
 **Mitigation:**
-- treat CAPTCHA as a conditional risk, not a confirmed blocker
+- treat CAPTCHA as an intermittent blocker/risk for the current public environment
 - keep registration success tests isolated until proven stable
+- allow the controlled success test to skip safely when the public environment does not let the submission proceed
+- treat duplicate-username validation as functionally dependent on the same registration submission path, so it inherits the same instability when the public environment blocks or breaks that flow
 
 ### Validation message inconsistency
 Observed or expected in Login and Registration:

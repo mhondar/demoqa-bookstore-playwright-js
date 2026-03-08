@@ -102,6 +102,8 @@ A flow should remain **documentation-only for now** when it is:
 
 **Important note:**
 Successful registration is automatable only if the environment remains stable and no CAPTCHA appears.
+Current revalidation on the public site shows intermittent behavior: the same successful-registration flow may complete in some runs and fail to proceed in others, depending on whether the public environment presents a CAPTCHA or similar gate.
+Duplicate-username validation depends on that same submission path, so it inherits the same weakness and may be skipped for the same functional dependency when the register flow does not execute correctly.
 
 ---
 

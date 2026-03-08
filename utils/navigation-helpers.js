@@ -14,6 +14,11 @@ class NavigationHelpers {
     await this.waitForPageReady(page);
   }
 
+  static async goToRegister(page) {
+    await page.goto(URLS.register);
+    await this.waitForPageReady(page);
+  }
+
   static async goToBooks(page) {
     await page.goto(URLS.books);
     await this.waitForPageReady(page);
