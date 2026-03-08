@@ -265,13 +265,13 @@ TC-<TYPE>-<MODULE>-<NNN>
 TC-SMK-BS-001
 TC-CRT-BD-002
 TC-REG-PR-003
-TC-CRT-E2E-073
+TC-CRT-E2E-071
 ```
 
 #### Recommendation
 
 - Keep IDs unique across the repository.
-- Do not reuse an ID for a different test case, even if the old one is removed later.
+- If the catalog is intentionally renumbered, update every reference consistently in docs, specs, and test data.
 - When a document groups cross-module journeys, use `E2E` as the module code.
 - Reflect negative behavior in the title and linked scenario ID, not by changing the `TYPE` segment.
 
@@ -359,24 +359,24 @@ Do not overload tests with too many tags. Prefer the minimum set that improves d
 #### Recommended minimum tagging pattern
 
 ```javascript
-test('TC-SMK-E2E-025 Access Book Store @smoke @e2e', async ({ page }) => {
+test('TC-SMK-E2E-023 Access Book Store @smoke @e2e', async ({ page }) => {
   // ...
 });
 
-test('TC-CRT-LG-008 Login with valid credentials @critical @login', async ({
+test('TC-CRT-LG-006 Login with valid credentials @critical @login', async ({
   page,
 }) => {
   // ...
 });
 
-test('TC-REG-PR-068 Remove a single book @regression @profile @authenticated @destructive', async ({
+test('TC-REG-PR-066 Remove a single book @regression @profile @authenticated @destructive', async ({
   page,
 }) => {
   // ...
 });
 ```
 
-For example, `TC-SMK-E2E-025` is implemented under Book Store because it validates Book Store access only, so the preferred implementation tag is `@smoke @bookstore`, not `@smoke @e2e`.
+For example, `TC-SMK-E2E-023` is implemented under Book Store because it validates Book Store access only, so the preferred implementation tag is `@smoke @bookstore`, not `@smoke @e2e`.
 
 #### CLI examples
 
@@ -416,10 +416,10 @@ Suggested tags:
 
 Examples:
 
-- `TC-SMK-E2E-025` → suggested tags: `@smoke @bookstore`
-- `TC-CRT-LG-008` → suggested tags: `@critical @login`
-- `TC-REG-BD-040` → suggested tags: `@regression @book-detail @negative @unauthenticated`
-- `TC-REG-PR-068` → suggested tags: `@regression @profile @authenticated @destructive`
+- `TC-SMK-E2E-023` → suggested tags: `@smoke @bookstore`
+- `TC-CRT-LG-006` → suggested tags: `@critical @login`
+- `TC-REG-BD-038` → suggested tags: `@regression @book-detail @negative @unauthenticated`
+- `TC-REG-PR-066` → suggested tags: `@regression @profile @authenticated @destructive`
 
 This recommendation should be applied consistently in future implementation discussions so tag decisions stay predictable before coding starts.
 

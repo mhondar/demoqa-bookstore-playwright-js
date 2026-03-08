@@ -18,7 +18,7 @@ Each test case includes only:
 
 ---
 
-## TC-REG-PAG-048
+## TC-REG-PAG-046
 
 **Title:**
 Validate pagination controls are visible
@@ -46,7 +46,7 @@ Validate pagination controls are visible
 
 ---
 
-## TC-REG-PAG-049
+## TC-REG-PAG-047
 
 **Title:**
 Validate current page indicator value
@@ -73,7 +73,7 @@ Validate current page indicator value
 
 ---
 
-## TC-REG-PAG-050
+## TC-REG-PAG-048
 
 **Title:**
 Validate previous button behavior on first page
@@ -101,7 +101,7 @@ Validate previous button behavior on first page
 
 ---
 
-## TC-REG-PAG-051
+## TC-REG-PAG-049
 
 **Title:**
 Validate next button behavior on last page
@@ -129,7 +129,7 @@ Validate next button behavior on last page
 
 ---
 
-## TC-REG-PAG-052
+## TC-REG-PAG-050
 
 **Title:**
 Validate pagination remains stable after search interaction

@@ -18,7 +18,7 @@ Each test case includes only:
 
 ---
 
-## TC-SMK-E2E-025
+## TC-SMK-E2E-023
 
 **Title:**
 Access Book Store
@@ -48,7 +48,7 @@ Access Book Store
 
 ---
 
-## TC-SMK-E2E-026
+## TC-SMK-E2E-024
 
 **Title:**
 View Book Catalog
@@ -76,7 +76,7 @@ View Book Catalog
 
 ---
 
-## TC-CRT-E2E-027
+## TC-CRT-E2E-025
 
 **Title:**
 Search Books by Exact Title
@@ -105,7 +105,7 @@ Search Books by Exact Title
 
 ---
 
-## TC-CRT-E2E-028
+## TC-CRT-E2E-026
 
 **Title:**
 Search with No Results
@@ -134,7 +134,7 @@ Search with No Results
 
 ---
 
-## TC-CRT-E2E-034
+## TC-CRT-E2E-032
 
 **Title:**
 Navigate to Book Detail
@@ -254,7 +254,7 @@ Login with Empty Fields
 
 ---
 
-## TC-CRT-E2E-053
+## TC-CRT-E2E-051
 
 **Title:**
 Access Authenticated Profile
@@ -284,7 +284,7 @@ Access Authenticated Profile
 
 ---
 
-## TC-CRT-E2E-073
+## TC-CRT-E2E-071
 
 **Title:**
 Access Protected Profile Without Authentication
@@ -313,7 +313,7 @@ Access Protected Profile Without Authentication
 
 ---
 
-## TC-CRT-E2E-054
+## TC-CRT-E2E-052
 
 **Title:**
 Logout
@@ -343,7 +343,7 @@ Logout
 
 ---
 
-## TC-REG-E2E-035
+## TC-REG-E2E-033
 
 **Title:**
 Add Book to Collection
@@ -374,7 +374,7 @@ Add Book to Collection
 
 ---
 
-## TC-REG-E2E-036
+## TC-REG-E2E-034
 
 **Title:**
 Attempt to Add Book Without Login
@@ -405,7 +405,7 @@ Attempt to Add Book Without Login
 
 ---
 
-## TC-REG-E2E-067
+## TC-REG-E2E-065
 
 **Title:**
 Remove Book from Collection
@@ -437,7 +437,7 @@ Remove Book from Collection
 
 ## Implementation Notes
 
-- Start automation with `TC-SMK-E2E-025` to `TC-CRT-E2E-054`.
-- Keep `TC-REG-E2E-035` to `TC-REG-E2E-067` isolated because they depend on persistent state.
+- Start automation with `TC-SMK-E2E-023` to `TC-CRT-E2E-052`.
+- Keep `TC-REG-E2E-033` to `TC-REG-E2E-065` isolated because they depend on persistent state.
 - Reuse centralized test data from `test-data/` and credentials from environment/config.
 - Keep assertions focused on stable outcomes only.

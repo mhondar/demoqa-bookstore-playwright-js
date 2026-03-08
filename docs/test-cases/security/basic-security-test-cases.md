@@ -18,7 +18,7 @@ Each test case includes only:
 
 ---
 
-## TC-CRT-SEC-074
+## TC-CRT-SEC-072
 
 **Title:**
 Validate redirect to login when unauthenticated
@@ -46,7 +46,7 @@ Validate redirect to login when unauthenticated
 
 ---
 
-## TC-CRT-SEC-075
+## TC-CRT-SEC-073
 
 **Title:**
 Validate restricted actions without authentication
@@ -76,7 +76,7 @@ Validate restricted actions without authentication
 
 ---
 
-## TC-REG-SEC-076
+## TC-REG-SEC-074
 
 **Title:**
 Validate protected profile content is hidden when unauthenticated
@@ -103,7 +103,7 @@ Validate protected profile content is hidden when unauthenticated
 
 ---
 
-## TC-REG-SEC-077
+## TC-REG-SEC-075
 
 **Title:**
 Validate protected action does not create collection changes when unauthenticated

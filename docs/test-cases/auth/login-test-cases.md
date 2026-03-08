@@ -76,7 +76,7 @@ Validate login form controls are visible
 
 ---
 
-## TC-CRT-LG-008
+## TC-CRT-LG-006
 
 **Title:**
 Validate login with invalid password
@@ -108,7 +108,7 @@ Validate login with invalid password
 
 ---
 
-## TC-CRT-LG-009
+## TC-CRT-LG-007
 
 **Title:**
 Validate navigation from login to registration
@@ -135,7 +135,7 @@ Validate navigation from login to registration
 
 ---
 
-## TC-REG-LG-010
+## TC-REG-LG-008
 
 **Title:**
 Validate login with empty username
@@ -165,7 +165,7 @@ Validate login with empty username
 
 ---
 
-## TC-REG-LG-011
+## TC-REG-LG-009
 
 **Title:**
 Validate login with empty password
@@ -195,7 +195,7 @@ Validate login with empty password
 
 ---
 
-## TC-REG-LG-012
+## TC-REG-LG-010
 
 **Title:**
 Validate login with empty fields
@@ -225,7 +225,7 @@ Validate login with empty fields
 
 ---
 
-## TC-CRT-LG-013
+## TC-CRT-LG-011
 
 **Title:**
 Validate logout
@@ -253,7 +253,7 @@ Validate logout
 
 ---
 
-## TC-REG-LG-014
+## TC-REG-LG-012
 
 **Title:**
 Validate navigation from login back to Book Store
