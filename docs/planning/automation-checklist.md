@@ -9,13 +9,14 @@ This checklist tracks which documented test cases are already automated in execu
 - `[ ]` Not automated yet
 
 **Current status**
-- Automated: `29 / 75`
-- Pending: `46 / 75`
+- Automated: `40 / 75`
+- Pending: `35 / 75`
 
 **Automation sources reviewed**
 - `tests/auth/login.spec.js`
 - `tests/auth/registration.spec.js`
-- `tests/bookstore/bookstore.spec.js`
+- `tests/bookstore/book-store.spec.js`
+- `tests/bookstore/book-detail.spec.js`
 
 ---
 
@@ -62,19 +63,19 @@ This checklist tracks which documented test cases are already automated in execu
 - [x] `TC-SMK-BS-027` — Validate book list loads
 - [x] `TC-SMK-BS-028` — Validate visible number of records
 - [x] `TC-CRT-BS-029` — Validate search with valid text
-- [ ] `TC-CRT-BS-030` — Validate search with no matches
-- [ ] `TC-CRT-BS-031` — Validate navigation to detail page
+- [x] `TC-CRT-BS-030` — Validate search with no matches
+- [x] `TC-CRT-BS-031` — Validate navigation to detail page
 
 ### Book Detail
 
-- [ ] `TC-CRT-E2E-032` — Navigate to Book Detail
-- [ ] `TC-REG-E2E-033` — Add Book to Collection
-- [ ] `TC-REG-E2E-034` — Attempt to Add Book Without Login
-- [ ] `TC-CRT-BD-035` — Validate book detail page loads from catalog selection
-- [ ] `TC-CRT-BD-036` — Validate detail page shows expected book information
-- [ ] `TC-REG-BD-037` — Validate back navigation to Book Store
-- [ ] `TC-REG-BD-038` — Validate add book to collection without login is blocked
-- [ ] `TC-REG-BD-039` — Validate add book to collection with authenticated user
+- [x] `TC-CRT-E2E-032` — Navigate to Book Detail
+- [x] `TC-REG-E2E-033` — Add Book to Collection (implemented as controlled automation with explicit API setup and cleanup for the authenticated collection state)
+- [x] `TC-REG-E2E-034` — Attempt to Add Book Without Login
+- [x] `TC-CRT-BD-035` — Validate book detail page loads from catalog selection
+- [x] `TC-CRT-BD-036` — Validate detail page shows expected book information
+- [x] `TC-REG-BD-037` — Validate back navigation to Book Store
+- [x] `TC-REG-BD-038` — Validate add book to collection without login is blocked
+- [x] `TC-REG-BD-039` — Validate add book to collection with authenticated user
 
 ### Search
 

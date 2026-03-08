@@ -39,7 +39,7 @@ ProfilePage.js
 ```text
 login.spec.js
 registration.spec.js
-bookstore.spec.js
+book-store.spec.js
 book-detail.spec.js
 profile.spec.js
 remove-books.spec.js
@@ -108,7 +108,7 @@ suite-name.spec.js
 
 ```text
 login.spec.js
-bookstore.spec.js
+book-store.spec.js
 book-detail.spec.js
 profile.spec.js
 remove-books.spec.js
@@ -122,7 +122,7 @@ Each spec file should group the test cases of the same suite.
 Examples:
 
 - `tests/auth/login.spec.js` → contains login cases
-- `tests/bookstore/bookstore.spec.js` → contains Book Store cases
+- `tests/bookstore/book-store.spec.js` → contains Book Store cases
 - `tests/bookstore/book-detail.spec.js` → contains Book Detail cases
 - `tests/profile/profile.spec.js` → contains profile visibility/search cases
 - `tests/profile/remove-books.spec.js` → contains destructive collection-removal cases
@@ -213,7 +213,7 @@ tests/
     login.spec.js
     registration.spec.js
   bookstore/
-    bookstore.spec.js
+    book-store.spec.js
     book-detail.spec.js
     search.spec.js
     pagination.spec.js

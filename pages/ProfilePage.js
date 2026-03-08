@@ -11,6 +11,7 @@ class ProfilePage extends BasePage {
     this.logoutButton = page.getByRole('button', { name: /^logout$/i });
     this.searchBox = page.getByPlaceholder('Type to search');
     this.bookTable = page.locator('.ReactTable, table');
+    this.collectionTitleLinks = page.locator('.ReactTable a, table a');
   }
 
   async goTo() {
@@ -25,6 +26,16 @@ class ProfilePage extends BasePage {
 
   async getDisplayedUsername() {
     return (await this.usernameValue.textContent())?.trim();
+  }
+
+  getBookTitleLinkByTitle(title) {
+    return this.page.locator('.ReactTable a, table a').filter({
+      hasText: new RegExp(`^${title.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')}$`, 'i'),
+    });
+  }
+
+  async hasBookInCollection(title) {
+    return (await this.getBookTitleLinkByTitle(title).count()) > 0;
   }
 
   get profilePath() {

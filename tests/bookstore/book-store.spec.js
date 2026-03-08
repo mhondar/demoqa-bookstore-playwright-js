@@ -278,4 +278,111 @@ test.describe('Book Store', () => {
       ).toHaveValue(exactTitle);
     });
   });
+
+  test('TC-CRT-BS-030 Validate search with no matches @critical @bookstore @search', async ({
+    page,
+  }) => {
+    const bookStorePage = new BookStorePage(page);
+    const noResultsTerm = booksData.searchData.invalidSearchTerms.noResults.value;
+    const expectedVisibleResults =
+      booksData.searchData.invalidSearchTerms.noResults.expectedVisibleResults;
+
+    await test.step('Open Book Store page and verify search is available', async () => {
+      await bookStorePage.goTo();
+      await bookStorePage.waitForCatalogLoaded();
+
+      await ValidationHelpers.expectVisible(
+        bookStorePage.searchInput,
+        'Search input should be visible before entering a no-match search term'
+      );
+    });
+
+    await test.step('Enter a non-existing search term', async () => {
+      await bookStorePage.search(noResultsTerm);
+    });
+
+    await test.step('Verify no matching records are visible and layout remains stable', async () => {
+      const visibleTitles = await bookStorePage.getVisibleBookTitles();
+      const visibleRowCount = await bookStorePage.getVisibleBookRowCount();
+
+      expect(
+        visibleRowCount,
+        'Searching with a no-match term should leave zero visible rows'
+      ).toBe(expectedVisibleResults);
+      expect(
+        visibleTitles,
+        'Searching with a no-match term should leave no visible titles'
+      ).toEqual([]);
+
+      await ValidationHelpers.expectVisible(
+        bookStorePage.catalogContainer,
+        'Book Store catalog container should remain visible after a no-match search'
+      );
+      await ValidationHelpers.expectVisible(
+        bookStorePage.catalogTable,
+        'Book Store table layout should remain visible after a no-match search'
+      );
+      await expect(
+        bookStorePage.searchInput,
+        'Search input should preserve the entered no-match term'
+      ).toHaveValue(noResultsTerm);
+    });
+  });
+
+  test('TC-CRT-BS-031 Validate navigation to detail page @critical @bookstore', async ({
+    page,
+  }) => {
+    const bookStorePage = new BookStorePage(page);
+    const BookDetailPage = require('../../pages/BookDetailPage');
+    const bookDetailPage = new BookDetailPage(page);
+    const selectedBook = booksData.books.gitPocketGuide;
+
+    await test.step('Open Book Store page and verify the known book is visible', async () => {
+      await bookStorePage.goTo();
+      await bookStorePage.waitForCatalogLoaded();
+
+      await ValidationHelpers.expectVisible(
+        bookStorePage.getBookTitleLinkByTitle(selectedBook.title),
+        'The known book title should be visible before navigating to its detail page'
+      );
+    });
+
+    await test.step('Click the known book title from the list', async () => {
+      await bookStorePage.clickBookTitle(selectedBook.title);
+    });
+
+    await test.step('Verify the user reaches the corresponding detail page and the selected detail is displayed', async () => {
+      await ValidationHelpers.expectUrlContains(
+        page,
+        bookStorePage.booksPath,
+        'Book detail navigation should keep the user within the Book Store route'
+      );
+      await ValidationHelpers.expectUrlContains(
+        page,
+        selectedBook.isbn,
+        'Book detail navigation should include the selected book identifier in the URL, even when the environment renders it through a search-style query parameter'
+      );
+      await bookDetailPage.waitForLoaded();
+      await ValidationHelpers.expectVisible(
+        bookDetailPage.detailContainer,
+        'Book detail container should be visible after navigating from the catalog'
+      );
+      await ValidationHelpers.expectVisible(
+        bookDetailPage.titleWrapper,
+        'Book title detail should be visible after navigating from the catalog'
+      );
+      await ValidationHelpers.expectVisible(
+        bookDetailPage.isbnWrapper,
+        'Book ISBN detail should be visible after navigating from the catalog'
+      );
+      await expect(
+        bookDetailPage.titleWrapper,
+        'Selected book title should be displayed on the detail page'
+      ).toContainText(selectedBook.title);
+      await expect(
+        bookDetailPage.isbnWrapper,
+        'Selected book ISBN should be displayed on the detail page'
+      ).toContainText(selectedBook.isbn);
+    });
+  });
 });

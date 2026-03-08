@@ -4,6 +4,10 @@ const { expect } = require('@playwright/test');
  * Common validation helpers to reduce assertion duplication in tests.
  */
 class ValidationHelpers {
+  static escapeForRegExp(value) {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
   static async expectVisible(locator, message) {
     await expect(locator, message).toBeVisible();
   }
@@ -17,7 +21,9 @@ class ValidationHelpers {
   }
 
   static async expectUrlContains(page, pathSegment, message) {
-    await expect(page, message).toHaveURL(new RegExp(pathSegment));
+    await expect(page, message).toHaveURL(
+      new RegExp(ValidationHelpers.escapeForRegExp(pathSegment))
+    );
   }
 
   static async expectTitleContains(page, titlePart, message) {

@@ -76,6 +76,14 @@ class BookStorePage extends BasePage {
     });
   }
 
+  getBookTitleLinkByTitle(title) {
+    return this.page.getByRole('link', { name: title, exact: true });
+  }
+
+  async clickBookTitle(title) {
+    await this.getBookTitleLinkByTitle(title).click();
+  }
+
   async getVisibleBookTitles() {
     const titleCount = await this.getVisibleBookTitleLinks().count();
     const titles = [];
