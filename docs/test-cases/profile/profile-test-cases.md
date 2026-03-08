@@ -252,7 +252,7 @@ Validate search within profile collection
 - collection contains at least one known book
 
 **Test data:**
-- `test-data/books.json` → known book title
+- `test-data/books.json` → `collectionData.expectedInitialProfileState.seededCollection.knownBookTitle`
 
 **Steps:**
 - open the Profile page in authenticated state
@@ -281,7 +281,7 @@ Validate profile collection search with no matches
 - collection search input is visible
 
 **Test data:**
-- non-existing collection term
+- `test-data/books.json` → `collectionData.expectedInitialProfileState.seededCollection.noMatchTerm`
 
 **Steps:**
 - open the Profile page in authenticated state
@@ -310,7 +310,7 @@ Validate empty collection state is handled safely
 - collection is empty or controlled to represent empty state
 
 **Test data:**
-- empty collection state
+- `test-data/books.json` → `collectionData.expectedInitialProfileState.emptyCollection`
 
 **Steps:**
 - open the Profile page in authenticated state

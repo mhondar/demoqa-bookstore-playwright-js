@@ -1,9 +1,104 @@
 {
+  "metadata": {
+    "usage": "Stable book catalog and reusable search data for Book Store coverage.",
+    "primarySearchDataSource": "searchData",
+    "legacySearchTermsSupported": true
+  },
+  "searchData": {
+    "validSearchTerms": {
+      "exactTitle": {
+        "value": "Git Pocket Guide",
+        "expectedBookKey": "gitPocketGuide",
+        "mappedTestCases": ["TC-CRT-SRCH-047", "TC-CRT-BS-038", "TC-CRT-E2E-003"]
+      },
+      "author": {
+        "value": "Richard E. Silverman",
+        "expectedBookKey": "gitPocketGuide",
+        "mappedTestCases": ["TC-REG-SRCH-049"]
+      }
+    },
+    "partialSearchTerms": {
+      "partialTitle": {
+        "value": "JavaScript",
+        "expectedBookKey": "learningJavaScriptDesignPatterns",
+        "mappedTestCases": ["TC-REG-SRCH-048"]
+      }
+    },
+    "invalidSearchTerms": {
+      "noResults": {
+        "value": "NonExistingAutomationBook",
+        "expectedVisibleResults": 0,
+        "mappedTestCases": ["TC-CRT-SRCH-050", "TC-CRT-BS-039", "TC-CRT-E2E-004"]
+      }
+    },
+    "emptySearchTerms": {
+      "emptyString": {
+        "value": "",
+        "expectedBehavior": "restore-default-list",
+        "mappedTestCases": ["TC-REG-SRCH-051"]
+      },
+      "whitespace": {
+        "value": "   ",
+        "expectedBehavior": "treat-as-empty-or-no-filter",
+        "mappedTestCases": ["TC-REG-SRCH-051"]
+      }
+    }
+  },
   "searchTerms": {
     "exactTitle": "Git Pocket Guide",
     "partialTitle": "JavaScript",
     "author": "Richard E. Silverman",
-    "noResults": "NonExistingAutomationBook"
+    "noResults": "NonExistingAutomationBook",
+    "empty": "",
+    "whitespace": "   "
+  },
+  "collectionData": {
+    "booksToAdd": {
+      "primaryAddBook": {
+        "bookKey": "gitPocketGuide",
+        "title": "Git Pocket Guide",
+        "isbn": "9781449325862",
+        "mappedTestCases": ["TC-REG-BD-045", "TC-REG-E2E-012"]
+      },
+      "secondaryAddBook": {
+        "bookKey": "learningJavaScriptDesignPatterns",
+        "title": "Learning JavaScript Design Patterns",
+        "isbn": "9781449331818",
+        "mappedTestCases": []
+      }
+    },
+    "booksToRemove": {
+      "singleRemoveBook": {
+        "bookKey": "gitPocketGuide",
+        "title": "Git Pocket Guide",
+        "seededProfileStateKey": "seededCollection",
+        "mappedTestCases": ["TC-REG-PR-069", "TC-REG-PR-070", "TC-REG-E2E-014"]
+      },
+      "deleteAllBooks": {
+        "bookKeys": ["gitPocketGuide", "learningJavaScriptDesignPatterns"],
+        "seededProfileStateKey": "seededCollection",
+        "mappedTestCases": ["TC-REG-PR-071", "TC-REG-PR-072"]
+      }
+    },
+    "expectedInitialProfileState": {
+      "seededCollection": {
+        "isAuthenticated": true,
+        "totalBooks": 2,
+        "visibleBookKeys": ["gitPocketGuide", "learningJavaScriptDesignPatterns"],
+        "searchableBookKey": "gitPocketGuide",
+        "knownBookTitle": "Git Pocket Guide",
+        "noMatchTerm": "NonExistingCollectionBook",
+        "emptyStateExpected": false,
+        "mappedTestCases": ["TC-CRT-PR-063", "TC-REG-PR-065", "TC-REG-PR-066", "TC-REG-PR-069", "TC-REG-PR-070", "TC-REG-PR-071", "TC-REG-PR-072"]
+      },
+      "emptyCollection": {
+        "isAuthenticated": true,
+        "totalBooks": 0,
+        "visibleBookKeys": [],
+        "emptyStateExpected": true,
+        "mappedTestCases": ["TC-REG-PR-067", "TC-REG-PR-073"]
+      }
+    }
   },
   "books": {
     "gitPocketGuide": {

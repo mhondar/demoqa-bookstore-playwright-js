@@ -1,18 +1,33 @@
 {
+  "metadata": {
+    "mainValidUserKey": "standardUser",
+    "credentialSourceOfTruth": ".env / config/global.js",
+    "usage": "Static reference users for documentation and stable test data."
+  },
+  "mainValidUser": {
+    "username": "testuser",
+    "password": "Test@123",
+    "firstName": "Test",
+    "lastName": "User",
+    "email": "testuser@example.com",
+    "role": "primary-auth-user"
+  },
   "validUsers": {
     "standardUser": {
       "username": "testuser",
       "password": "Test@123",
       "firstName": "Test",
       "lastName": "User",
-      "email": "testuser@example.com"
+      "email": "testuser@example.com",
+      "role": "primary-auth-user"
     },
     "adminUser": {
       "username": "adminuser",
       "password": "Admin@123",
       "firstName": "Admin",
       "lastName": "User",
-      "email": "adminuser@example.com"
+      "email": "adminuser@example.com",
+      "role": "extended-coverage-user"
     }
   },
   "profileUsers": {
@@ -21,7 +36,8 @@
       "password": "Reader@123",
       "firstName": "Reader",
       "lastName": "One",
-      "email": "reader.one@example.com"
+      "email": "reader.one@example.com",
+      "role": "profile-state-user"
     }
   }
 }

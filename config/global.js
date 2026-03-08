@@ -62,6 +62,9 @@ const config = {
     valid: {
       username: process.env.TEST_USERNAME || 'testuser',
       password: process.env.TEST_PASSWORD || 'Test@123',
+      firstName: process.env.TEST_USER_FIRST_NAME || 'Test',
+      lastName: process.env.TEST_USER_LAST_NAME || 'User',
+      email: process.env.TEST_USER_EMAIL || 'testuser@example.com',
     },
     invalid: {
       username: process.env.INVALID_TEST_USERNAME || 'invaliduser',

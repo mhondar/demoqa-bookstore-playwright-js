@@ -167,6 +167,7 @@ Validate clearing search restores the list
 
 **Test data:**
 - `test-data/books.json` → `searchTerms.exactTitle`
+- `test-data/books.json` → `searchTerms.empty`
 
 **Steps:**
 - enter a valid search term

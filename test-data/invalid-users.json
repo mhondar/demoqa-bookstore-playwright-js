@@ -1,4 +1,14 @@
 {
+  "metadata": {
+    "mainInvalidScenarioKey": "wrongUsername",
+    "usage": "Negative login and validation scenarios for authentication coverage."
+  },
+  "mainInvalidUserScenario": {
+    "username": "unknownuser",
+    "password": "Test@123",
+    "expectedMessage": "Invalid username or password!",
+    "description": "Unknown username with valid-looking password"
+  },
   "invalidLoginScenarios": {
     "wrongPassword": {
       "username": "testuser",

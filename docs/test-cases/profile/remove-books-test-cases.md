@@ -28,7 +28,7 @@ Validate removing a single book
 - collection is seeded with a known book
 
 **Test data:**
-- `test-data/books.json` → known seeded book title
+- `test-data/books.json` → `collectionData.booksToRemove.singleRemoveBook`
 
 **Steps:**
 - open the Profile page in authenticated state
@@ -58,7 +58,7 @@ Validate cancel single-book deletion
 - collection is seeded with a known book
 
 **Test data:**
-- `test-data/books.json` → known seeded book title
+- `test-data/books.json` → `collectionData.booksToRemove.singleRemoveBook`
 
 **Steps:**
 - open the Profile page in authenticated state
@@ -87,7 +87,8 @@ Validate removing all books if supported
 - collection contains one or more books
 
 **Test data:**
-- seeded collection with known books
+- `test-data/books.json` → `collectionData.booksToRemove.deleteAllBooks`
+- `test-data/books.json` → `collectionData.expectedInitialProfileState.seededCollection`
 
 **Steps:**
 - open the Profile page in authenticated state
@@ -116,7 +117,8 @@ Validate cancel delete-all action
 - collection contains one or more books
 
 **Test data:**
-- seeded collection with known books
+- `test-data/books.json` → `collectionData.booksToRemove.deleteAllBooks`
+- `test-data/books.json` → `collectionData.expectedInitialProfileState.seededCollection`
 
 **Steps:**
 - open the Profile page in authenticated state
@@ -145,7 +147,7 @@ Validate delete controls are safe on empty collection
 - collection is empty or controlled to represent empty state
 
 **Test data:**
-- empty collection state
+- `test-data/books.json` → `collectionData.expectedInitialProfileState.emptyCollection`
 
 **Steps:**
 - open the Profile page in authenticated state

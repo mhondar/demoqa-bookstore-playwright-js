@@ -117,7 +117,7 @@ Validate add book to collection without login is blocked
 - stable book detail access
 
 **Test data:**
-- `test-data/books.json` → `books.gitPocketGuide.title`
+- `test-data/books.json` → `collectionData.booksToAdd.primaryAddBook`
 
 **Steps:**
 - open a known book detail page from the catalog
@@ -147,7 +147,7 @@ Validate add book to collection with authenticated user
 - stable book detail access
 
 **Test data:**
-- `test-data/books.json` → `books.gitPocketGuide.title`
+- `test-data/books.json` → `collectionData.booksToAdd.primaryAddBook`
 
 **Steps:**
 - open a known book detail page
