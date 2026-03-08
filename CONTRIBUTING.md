@@ -159,6 +159,55 @@ test.describe('Profile Management', () => {
 });
 ```
 
+### 2.1 Test Case ID Convention
+
+For documentation and traceability, every test case must use this ID format:
+
+```text
+TC-<TYPE>-<MODULE>-<NNN>
+```
+
+#### Format rules
+
+- `TC` → fixed prefix for test case
+- `TYPE` → execution classification
+- `MODULE` → functional module or suite
+- `NNN` → three-digit sequential identifier
+
+#### Allowed type codes
+
+- `SMK` → smoke
+- `CRT` → critical
+- `REG` → regression
+
+#### Allowed module codes
+
+- `E2E` → cross-module end-to-end coverage
+- `SEC` → basic security scenarios
+- `BS` → Book Store
+- `BD` → Book Detail
+- `SRCH` → Search
+- `PAG` → Pagination
+- `LG` → Login
+- `RG` → Registration
+- `PR` → Profile
+
+#### Examples
+
+```text
+TC-SMK-BS-001
+TC-CRT-BD-002
+TC-REG-PR-003
+TC-CRT-E2E-010
+```
+
+#### Recommendation
+
+- Keep IDs unique across the repository.
+- Do not reuse an ID for a different test case, even if the old one is removed later.
+- When a document groups cross-module journeys, use `E2E` as the module code.
+- Reflect negative behavior in the title and linked scenario ID, not by changing the `TYPE` segment.
+
 ---
 
 ### 3. Branching Convention
