@@ -24,7 +24,7 @@ Scope, inventory, risk, and coverage planning documents.
 ### test-cases/
 Detailed designed test cases for future automation.
 
-- `test-cases/general/detailed-test-cases.md`
+- `test-cases/e2e/e2e-test-cases.md`
 - `test-cases/auth/login-test-cases.md`
 - `test-cases/auth/registration-test-cases.md`
 - `test-cases/bookstore/bookstore-test-cases.md`

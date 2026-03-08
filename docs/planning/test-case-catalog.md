@@ -12,31 +12,13 @@ It provides a quick reference for:
 
 The catalog is aligned with the current global numbering strategy used in `docs/test-cases/`.
 
----
-
-## General
-
-- [`TC-SMK-E2E-001` — Access Book Store](../test-cases/general/detailed-test-cases.md#tc-smk-e2e-001)
-- [`TC-SMK-E2E-002` — View Book Catalog](../test-cases/general/detailed-test-cases.md#tc-smk-e2e-002)
-- [`TC-CRT-E2E-003` — Search Books by Exact Title](../test-cases/general/detailed-test-cases.md#tc-crt-e2e-003)
-- [`TC-CRT-E2E-004` — Search with No Results](../test-cases/general/detailed-test-cases.md#tc-crt-e2e-004)
-- [`TC-CRT-E2E-005` — Navigate to Book Detail](../test-cases/general/detailed-test-cases.md#tc-crt-e2e-005)
-- [`TC-CRT-E2E-006` — Valid Login](../test-cases/general/detailed-test-cases.md#tc-crt-e2e-006)
-- [`TC-CRT-E2E-007` — Invalid Login](../test-cases/general/detailed-test-cases.md#tc-crt-e2e-007)
-- [`TC-REG-E2E-008` — Login with Empty Fields](../test-cases/general/detailed-test-cases.md#tc-reg-e2e-008)
-- [`TC-CRT-E2E-009` — Access Authenticated Profile](../test-cases/general/detailed-test-cases.md#tc-crt-e2e-009)
-- [`TC-CRT-E2E-010` — Access Protected Profile Without Authentication](../test-cases/general/detailed-test-cases.md#tc-crt-e2e-010)
-- [`TC-CRT-E2E-011` — Logout](../test-cases/general/detailed-test-cases.md#tc-crt-e2e-011)
-- [`TC-REG-E2E-012` — Add Book to Collection](../test-cases/general/detailed-test-cases.md#tc-reg-e2e-012)
-- [`TC-REG-E2E-013` — Attempt to Add Book Without Login](../test-cases/general/detailed-test-cases.md#tc-reg-e2e-013)
-- [`TC-REG-E2E-014` — Remove Book from Collection](../test-cases/general/detailed-test-cases.md#tc-reg-e2e-014)
-
----
-
 ## Auth
 
 ### Login
 
+- [`TC-CRT-E2E-006` — Valid Login](../test-cases/e2e/e2e-test-cases.md#tc-crt-e2e-006)
+- [`TC-CRT-E2E-007` — Invalid Login](../test-cases/e2e/e2e-test-cases.md#tc-crt-e2e-007)
+- [`TC-REG-E2E-008` — Login with Empty Fields](../test-cases/e2e/e2e-test-cases.md#tc-reg-e2e-008)
 - [`TC-SMK-LG-015` — Validate login page loads](../test-cases/auth/login-test-cases.md#tc-smk-lg-015)
 - [`TC-SMK-LG-016` — Validate login form controls are visible](../test-cases/auth/login-test-cases.md#tc-smk-lg-016)
 - [`TC-CRT-LG-017` — Validate login with valid credentials](../test-cases/auth/login-test-cases.md#tc-crt-lg-017)
@@ -68,6 +50,10 @@ The catalog is aligned with the current global numbering strategy used in `docs/
 
 ### Book Store
 
+- [`TC-SMK-E2E-001` — Access Book Store](../test-cases/e2e/e2e-test-cases.md#tc-smk-e2e-001)
+- [`TC-SMK-E2E-002` — View Book Catalog](../test-cases/e2e/e2e-test-cases.md#tc-smk-e2e-002)
+- [`TC-CRT-E2E-003` — Search Books by Exact Title](../test-cases/e2e/e2e-test-cases.md#tc-crt-e2e-003)
+- [`TC-CRT-E2E-004` — Search with No Results](../test-cases/e2e/e2e-test-cases.md#tc-crt-e2e-004)
 - [`TC-SMK-BS-036` — Validate book list loads](../test-cases/bookstore/bookstore-test-cases.md#tc-smk-bs-036)
 - [`TC-SMK-BS-037` — Validate visible number of records](../test-cases/bookstore/bookstore-test-cases.md#tc-smk-bs-037)
 - [`TC-CRT-BS-038` — Validate search with valid text](../test-cases/bookstore/bookstore-test-cases.md#tc-crt-bs-038)
@@ -76,6 +62,9 @@ The catalog is aligned with the current global numbering strategy used in `docs/
 
 ### Book Detail
 
+- [`TC-CRT-E2E-005` — Navigate to Book Detail](../test-cases/e2e/e2e-test-cases.md#tc-crt-e2e-005)
+- [`TC-REG-E2E-012` — Add Book to Collection](../test-cases/e2e/e2e-test-cases.md#tc-reg-e2e-012)
+- [`TC-REG-E2E-013` — Attempt to Add Book Without Login](../test-cases/e2e/e2e-test-cases.md#tc-reg-e2e-013)
 - [`TC-CRT-BD-041` — Validate book detail page loads from catalog selection](../test-cases/bookstore/book-detail-test-cases.md#tc-crt-bd-041)
 - [`TC-CRT-BD-042` — Validate detail page shows expected book information](../test-cases/bookstore/book-detail-test-cases.md#tc-crt-bd-042)
 - [`TC-REG-BD-043` — Validate back navigation to Book Store](../test-cases/bookstore/book-detail-test-cases.md#tc-reg-bd-043)
@@ -105,6 +94,8 @@ The catalog is aligned with the current global numbering strategy used in `docs/
 
 ### User Profile
 
+- [`TC-CRT-E2E-009` — Access Authenticated Profile](../test-cases/e2e/e2e-test-cases.md#tc-crt-e2e-009)
+- [`TC-CRT-E2E-011` — Logout](../test-cases/e2e/e2e-test-cases.md#tc-crt-e2e-011)
 - [`TC-SMK-PR-057` — Validate unauthenticated profile access shows guidance](../test-cases/profile/profile-test-cases.md#tc-smk-pr-057)
 - [`TC-SMK-PR-058` — Validate login link is available from unauthenticated profile](../test-cases/profile/profile-test-cases.md#tc-smk-pr-058)
 - [`TC-SMK-PR-059` — Validate register link is available from unauthenticated profile](../test-cases/profile/profile-test-cases.md#tc-smk-pr-059)
@@ -120,6 +111,7 @@ The catalog is aligned with the current global numbering strategy used in `docs/
 
 ### Remove Books
 
+- [`TC-REG-E2E-014` — Remove Book from Collection](../test-cases/e2e/e2e-test-cases.md#tc-reg-e2e-014)
 - [`TC-REG-PR-069` — Validate removing a single book](../test-cases/profile/remove-books-test-cases.md#tc-reg-pr-069)
 - [`TC-REG-PR-070` — Validate cancel single-book deletion](../test-cases/profile/remove-books-test-cases.md#tc-reg-pr-070)
 - [`TC-REG-PR-071` — Validate removing all books if supported](../test-cases/profile/remove-books-test-cases.md#tc-reg-pr-071)
@@ -130,6 +122,7 @@ The catalog is aligned with the current global numbering strategy used in `docs/
 
 ## Security
 
+- [`TC-CRT-E2E-010` — Access Protected Profile Without Authentication](../test-cases/e2e/e2e-test-cases.md#tc-crt-e2e-010)
 - [`TC-CRT-SEC-074` — Validate redirect to login when unauthenticated](../test-cases/security/basic-security-test-cases.md#tc-crt-sec-074)
 - [`TC-CRT-SEC-075` — Validate restricted actions without authentication](../test-cases/security/basic-security-test-cases.md#tc-crt-sec-075)
 - [`TC-REG-SEC-076` — Validate protected profile content is hidden when unauthenticated](../test-cases/security/basic-security-test-cases.md#tc-reg-sec-076)

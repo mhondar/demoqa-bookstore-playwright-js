@@ -121,10 +121,11 @@ demoqa-bookstore-playwright-js
 │   ├── urls.js
 │
 ├── tests
-│   ├── smoke
 │   ├── auth
 │   ├── bookstore
-│   └── profile
+│   ├── profile
+│   ├── security
+│   └── regression
 │
 ├── pages
 │   ├── BasePage.js

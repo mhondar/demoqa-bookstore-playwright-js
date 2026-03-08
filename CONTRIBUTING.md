@@ -34,15 +34,16 @@ BookDetailPage.js
 ProfilePage.js
 ```
 
-##### Test files
+#### Test files
 
 ```text
-login-valid-user.spec.js
-login-invalid-user.spec.js
-book-search.spec.js
-book-detail-navigation.spec.js
-add-book-to-collection.spec.js
-remove-book-from-collection.spec.js
+login.spec.js
+registration.spec.js
+bookstore.spec.js
+book-detail.spec.js
+profile.spec.js
+remove-books.spec.js
+security.spec.js
 ```
 
 ##### Utility files
@@ -97,19 +98,37 @@ A good test name should read almost like documentation.
 
 #### File naming format
 
+Test files must use the **suite name**, not the individual test case name.
+
 ```text
-feature-action-expected-result.spec.js
+suite-name.spec.js
 ```
 
 #### Examples
 
 ```text
-login-valid-credentials.spec.js
-login-empty-fields.spec.js
-book-search-valid-keyword.spec.js
-book-search-no-results.spec.js
-profile-remove-book.spec.js
+login.spec.js
+bookstore.spec.js
+book-detail.spec.js
+profile.spec.js
+remove-books.spec.js
+e2e-regression.spec.js
 ```
+
+#### File content rule
+
+Each spec file should group the test cases of the same suite.
+
+Examples:
+
+- `tests/auth/login.spec.js` → contains login cases
+- `tests/bookstore/bookstore.spec.js` → contains Book Store cases
+- `tests/bookstore/book-detail.spec.js` → contains Book Detail cases
+- `tests/profile/profile.spec.js` → contains profile visibility/search cases
+- `tests/profile/remove-books.spec.js` → contains destructive collection-removal cases
+- `tests/regression/e2e-regression.spec.js` → contains truly cross-functional journeys
+
+Avoid creating one spec file per single test case unless there is a very strong technical reason.
 
 #### Test block naming style
 
@@ -157,6 +176,54 @@ test.describe('Book Search', () => {
 test.describe('Profile Management', () => {
   // tests
 });
+```
+
+#### Recommended relationship between folders, files, and cases
+
+- folder → functional catalog area
+- file → suite name inside that area
+- test block → individual documented test case
+
+#### Folder strategy rule
+
+Use only **functional folders** under `tests/`.
+
+Allowed top-level test folders should represent business or catalog areas, for example:
+
+- `tests/auth`
+- `tests/bookstore`
+- `tests/profile`
+- `tests/security`
+- `tests/regression` only when a case genuinely spans multiple functionalities
+
+Do **not** create top-level folders by execution type such as:
+
+- `tests/smoke`
+- `tests/regression`
+- `tests/critical`
+
+Execution type must be represented through tags like `@smoke`, `@critical`, and `@regression`, not through folder names.
+Use `tests/regression` only as an exception for cross-functional journeys that do not belong naturally to a single functionality folder.
+
+Example:
+
+```text
+tests/
+  auth/
+    login.spec.js
+    registration.spec.js
+  bookstore/
+    bookstore.spec.js
+    book-detail.spec.js
+    search.spec.js
+    pagination.spec.js
+  profile/
+    profile.spec.js
+    remove-books.spec.js
+  security/
+    security.spec.js
+  regression/
+    e2e-regression.spec.js
 ```
 
 ### 2.1 Test Case ID Convention
@@ -207,6 +274,154 @@ TC-CRT-E2E-010
 - Do not reuse an ID for a different test case, even if the old one is removed later.
 - When a document groups cross-module journeys, use `E2E` as the module code.
 - Reflect negative behavior in the title and linked scenario ID, not by changing the `TYPE` segment.
+
+### 2.2 Test Tag Convention
+
+To keep the folder structure aligned with the catalog hierarchy, test selection must rely on tags instead of separate `smoke/`, `critical/`, or `regression/` folders.
+
+#### Tagging goals
+
+Tags are used to:
+
+- filter tests by execution purpose
+- filter tests by functional module
+- keep the physical folder structure aligned with the test catalog
+- support targeted execution from Playwright CLI
+
+#### Core rule
+
+Every automated test should include:
+
+- **one execution tag**
+- **one functional tag**
+
+Optional complementary tags may be added only when they improve selection clarity.
+
+#### Execution tags
+
+Use exactly one of these tags according to the test case `TYPE`:
+
+- `@smoke` → for `SMK` test cases
+- `@critical` → for `CRT` test cases
+- `@regression` → for `REG` test cases
+
+#### When to use each execution tag
+
+- Use `@smoke` when the test verifies a minimal high-value flow that confirms the application is available and a core feature works.
+- Use `@critical` when the test validates an essential business flow that must be stable but is not necessarily part of the smallest smoke subset.
+- Use `@regression` when the test expands coverage with broader happy-path, edge, stateful, or negative scenarios.
+
+#### Functional tags
+
+Use one functional tag based on the module under test:
+
+- `@e2e` → truly cross-functional journeys that span multiple functionalities
+- `@security` → security and access-control scenarios
+- `@bookstore` → Book Store module tests
+- `@book-detail` → Book Detail tests
+- `@search` → search-focused tests when search is the primary subject
+- `@pagination` → pagination-focused tests
+- `@login` → login tests
+- `@registration` → registration tests
+- `@profile` → profile and collection tests
+
+#### When to use each functional tag
+
+- Use `@e2e` only when the implemented test really spans more than one functionality and belongs in `tests/regression`.
+- Use the functional tag of the feature actually exercised when an `E2E`-coded case is implemented inside a single functionality folder.
+- Use `@bookstore` when the main subject is the catalog page or its base visibility/state.
+- Use `@book-detail` when the main subject is the detail page and its actions.
+- Use `@search` when search behavior is the main validation target, even if it happens inside Book Store or Profile.
+- Use `@pagination` when the primary intent is page navigation across rows.
+- Use `@login` for authentication entry tests.
+- Use `@registration` for user creation or registration form scenarios.
+- Use `@profile` for profile page, collection visibility, logout from profile, and collection management flows.
+- Use `@security` for access restrictions, redirects, and protected actions.
+
+#### Optional complementary tags
+
+These tags are optional and should be added only if they help with focused execution:
+
+- `@negative` → negative validation or blocked behavior
+- `@authenticated` → requires logged-in state
+- `@unauthenticated` → requires anonymous state
+- `@destructive` → changes persistent state, such as removing books
+- `@mobile` → mobile-specific execution focus when needed
+
+Do not overload tests with too many tags. Prefer the minimum set that improves discoverability.
+
+#### Mapping between ID and execution tag
+
+- `TC-SMK-*` → must include `@smoke`
+- `TC-CRT-*` → must include `@critical`
+- `TC-REG-*` → must include `@regression`
+
+#### Recommended minimum tagging pattern
+
+```javascript
+test('TC-SMK-E2E-001 Access Book Store @smoke @e2e', async ({ page }) => {
+  // ...
+});
+
+test('TC-CRT-LG-019 Login with valid credentials @critical @login', async ({
+  page,
+}) => {
+  // ...
+});
+
+test('TC-REG-PR-069 Remove a single book @regression @profile @authenticated @destructive', async ({
+  page,
+}) => {
+  // ...
+});
+```
+
+For example, `TC-SMK-E2E-001` is implemented under Book Store because it validates Book Store access only, so the preferred implementation tag is `@smoke @bookstore`, not `@smoke @e2e`.
+
+#### CLI examples
+
+```bash
+npx playwright test --grep @smoke
+npx playwright test --grep "@critical.*@login"
+npx playwright test --grep "@regression.*@profile"
+npx playwright test --grep @destructive
+```
+
+#### Recommendation
+
+- Keep folders based on functional hierarchy: `tests/auth`, `tests/bookstore`, `tests/profile`, `tests/security`.
+- Keep only one top-level folder per functionality.
+- Use `tests/regression` only for cases that truly combine multiple functionalities.
+- Use tags for execution intent and targeted subsets.
+- Keep the tag set stable across the repository.
+- Do not create synonymous tags for the same concept.
+
+#### Rule for future implementations
+
+When implementing a new automated test case, always define a **suggested tag set** before or during implementation.
+
+At minimum, every implementation handoff should state:
+
+- the required execution tag
+- the required functional tag
+- any optional contextual tags that make the case easier to select
+
+Recommended format in implementation notes or task handoff:
+
+```text
+Suggested tags:
+- required: @smoke @e2e
+- optional: @unauthenticated
+```
+
+Examples:
+
+- `TC-SMK-E2E-001` → suggested tags: `@smoke @bookstore`
+- `TC-CRT-LG-019` → suggested tags: `@critical @login`
+- `TC-REG-BD-044` → suggested tags: `@regression @book-detail @negative @unauthenticated`
+- `TC-REG-PR-069` → suggested tags: `@regression @profile @authenticated @destructive`
+
+This recommendation should be applied consistently in future implementation discussions so tag decisions stay predictable before coding starts.
 
 ---
 
