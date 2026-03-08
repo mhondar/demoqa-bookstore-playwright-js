@@ -34,13 +34,14 @@ The main objectives of this project are:
 * **JavaScript (Node.js)**
 * **Playwright Test Runner**
 * **HTML Reporter**
+* **ESLint** - Code linting
+* **Prettier** - Code formatting
+* **Faker.js** - Test data generation
+* **dotenv** - Environment variables
 * **GitHub**
 
 Optional additions planned:
 
-* ESLint
-* Prettier
-* Faker / test data generators
 * GitHub Actions CI
 
 ---
@@ -219,6 +220,62 @@ Install Playwright browsers:
 ```bash
 npx playwright install
 ```
+
+---
+
+## Development Tools
+
+The project includes several development tools to maintain code quality and consistency.
+
+### Code Quality
+
+**Linting with ESLint:**
+```bash
+npm run lint          # Check code quality
+npm run lint:fix      # Fix auto-fixable issues
+```
+
+**Formatting with Prettier:**
+```bash
+npm run format        # Format all code
+npm run format:check  # Check if code is formatted
+```
+
+**Quality Check (combined):**
+```bash
+npm run quality       # Run linting and formatting checks
+```
+
+### Test Data Generation
+
+The project uses **Faker.js** for generating test data. See `utils/testDataBuilder.js` for available methods:
+
+```javascript
+const TestDataBuilder = require('./utils/testDataBuilder');
+
+// Generate user data
+const user = TestDataBuilder.generateUser();
+
+// Generate books
+const books = TestDataBuilder.generateBooks(5);
+
+// Get valid/invalid credentials
+const validCreds = TestDataBuilder.getValidCredentials();
+```
+
+### Environment Configuration
+
+Create a `.env` file based on `.env.example` to configure environment variables:
+
+```bash
+cp .env.example .env
+```
+
+Available environment variables:
+- `BASE_URL` - Application base URL
+- `TEST_ENV` - Test environment (local, staging, prod)
+- `BROWSER` - Default browser (chromium, firefox, webkit)
+- Test timeouts and other configurations
 
 ---
 
