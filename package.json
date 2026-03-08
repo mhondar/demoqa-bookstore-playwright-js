@@ -1,0 +1,27 @@
+{
+  "name": "demoqa-bookstore-playwright",
+  "version": "1.0.0",
+  "description": "This repository contains a **test automation framework built with Playwright and JavaScript** to automate the **DemoQA Book Store application**.",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhondar/demoqa-bookstore-playwright-js.git"
+  },
+  "keywords": [],
+  "author": "Marisleydi Hondar Martinez",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mhondar/demoqa-bookstore-playwright-js/issues"
+  },
+  "homepage": "https://github.com/mhondar/demoqa-bookstore-playwright-js#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}

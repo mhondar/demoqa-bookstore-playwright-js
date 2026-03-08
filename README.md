@@ -72,6 +72,9 @@ Example structure:
 ```
 demoqa-bookstore-playwright-js
 │
+├── config
+│   ├── urls.js
+│
 ├── tests
 │   ├── smoke
 │   ├── auth
@@ -104,8 +107,36 @@ Key architecture principles:
 * Page Object Model for UI abstraction
 * Separation between tests, pages, and utilities
 * Reusable helpers
+* Centralized configuration management
 * Independent test cases
 * Clear test suite organization
+
+---
+
+## Configuration
+
+The framework uses centralized configuration files for better maintainability.
+
+### URLs Configuration
+
+All application URLs are centralized in `config/urls.js`:
+
+```javascript
+const { URLS } = require('../config/urls');
+
+// Usage in tests
+await page.goto(URLS.books);
+await page.goto(URLS.login);
+await page.goto(URLS.profile);
+```
+
+**Benefits:**
+* Single source of truth for URLs
+* Easy environment switching
+* Consistent URL usage across tests
+* Better maintainability
+
+See `config/README.md` for detailed usage examples.
 
 ---
 
