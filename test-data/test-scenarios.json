@@ -1,0 +1,17 @@
+{
+  "smoke": [
+    "book-store-page-loads",
+    "login-page-loads",
+    "profile-page-redirects-unauthenticated-user"
+  ],
+  "critical": [
+    "valid-login",
+    "book-search-by-title",
+    "view-book-details"
+  ],
+  "regression": [
+    "invalid-login-error-message",
+    "empty-login-validation",
+    "book-search-no-results"
+  ]
+}

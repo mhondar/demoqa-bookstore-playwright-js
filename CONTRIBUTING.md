@@ -322,3 +322,162 @@ That mix always ends up ugly.
 
 ---
 
+### 6. Page Object Model Design Convention
+
+Use these rules consistently across all classes in `pages/`.
+
+#### Rules for creating Page Objects
+
+* One page class per functional screen/component.
+* Constructor should only keep `page` and initialize locators.
+* Use `BasePage` only for shared behavior used by multiple page classes.
+* Keep methods small and action-oriented (`clickLogin()`, `searchBook()`, `addToCollection()`).
+
+#### What belongs inside a page class
+
+* Page-specific locators
+* Reusable actions and flows on that page
+* Small helper getters (for text/state retrieval)
+
+Do not include suite orchestration logic in page classes.
+
+#### Separate locators from actions
+
+Define locators together in constructor or a dedicated `selectors` object, and keep actions in separate methods.
+
+Good pattern:
+
+```javascript
+class BookStorePage {
+  constructor(page) {
+    this.page = page;
+
+    // locators
+    this.searchInput = page.getByPlaceholder('Type to search');
+    this.bookRows = page.locator('.rt-tr-group');
+  }
+
+  // actions
+  async search(term) {
+    await this.searchInput.fill(term);
+  }
+}
+```
+
+#### Avoid complex assertions inside POM
+
+Keep business assertions in test files (`tests/**/*.spec.js`).
+
+Inside a page class:
+
+* acceptable: return values / expose locator handles
+* avoid: multi-step `expect()` validations and business rule assertions
+
+Use test files for validation clarity and better reporting.
+
+---
+
+### 7. Utilities Layer Design Convention
+
+Utilities in `utils/` should support reuse across multiple test modules.
+
+#### Create navigation helpers
+
+Keep shared navigation logic in a dedicated helper module:
+
+* `goToHome(page)`
+* `goToLogin(page)`
+* `goToBooks(page)`
+* `goToProfile(page)`
+
+Use these only for generic routing behavior.
+
+#### Create dynamic data helpers
+
+Use a helper for generating stable dynamic data:
+
+* unique ids
+* dynamic users
+* dynamic books
+* random picks from lists
+
+This avoids duplicate data generation logic in test files.
+
+#### Create common validation helpers
+
+Use lightweight shared validations (visibility, url, text, title) to avoid repetition.
+
+Keep validations generic and framework-level.
+
+#### Create logging helper (optional)
+
+Use a logger only if needed for diagnostics or CI troubleshooting.
+
+* support `debug`, `info`, `warn`, `error`
+* respect `LOG_LEVEL`
+* avoid noisy logs by default
+
+#### Boundaries
+
+* Utilities should not know business scenarios.
+* Utilities should not replace page objects.
+* Utilities should not contain full test flows.
+
+---
+
+### 8. Test Data Strategy Convention
+
+Use a clear separation between static, dynamic, credential, and invalid datasets.
+
+#### Static JSON test data
+
+Store stable reusable datasets in `test-data/`.
+
+Examples:
+
+* `users.json`
+* `invalid-users.json`
+* `books.json`
+* `test-scenarios.json`
+
+Use these when assertions depend on known values.
+
+#### Dynamic user data
+
+Use helper functions for runtime-generated data that must be unique.
+
+Examples:
+
+* dynamic usernames
+* unique emails
+* generated book objects
+
+Keep this logic in utility modules, not inline in test files.
+
+#### Credential management strategy
+
+Never hardcode sensitive credentials in tests.
+
+Use:
+
+* local `.env`
+* CI secrets
+* centralized access through config
+
+Committed test data files may contain demo values only.
+
+#### Invalid data scenarios
+
+Group negative scenarios in dedicated JSON files so they can be reused across modules.
+
+Examples:
+
+* wrong password
+* empty username
+* empty password
+* invalid email format
+
+This keeps tests small, readable, and consistent.
+
+---
+

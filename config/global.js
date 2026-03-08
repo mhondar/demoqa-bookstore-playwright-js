@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const config = {
   // Application URLs
-  urls: require('./config/urls'),
+  urls: require('./urls'),
 
   // Test settings
   timeouts: {
@@ -26,7 +26,7 @@ const config = {
   },
 
   // Test data
-  testData: require('./utils/testDataBuilder'),
+  testData: require('../utils').TestDataBuilder,
 
   // Environment
   environment: {
@@ -60,12 +60,12 @@ const config = {
   // Test user credentials
   credentials: {
     valid: {
-      username: 'testuser',
-      password: 'Test@123',
+      username: process.env.TEST_USERNAME || 'testuser',
+      password: process.env.TEST_PASSWORD || 'Test@123',
     },
     invalid: {
-      username: 'invaliduser',
-      password: 'wrongpass',
+      username: process.env.INVALID_TEST_USERNAME || 'invaliduser',
+      password: process.env.INVALID_TEST_PASSWORD || 'WrongPass@123',
     },
   },
 };

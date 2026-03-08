@@ -1,0 +1,27 @@
+{
+  "validUsers": {
+    "standardUser": {
+      "username": "testuser",
+      "password": "Test@123",
+      "firstName": "Test",
+      "lastName": "User",
+      "email": "testuser@example.com"
+    },
+    "adminUser": {
+      "username": "adminuser",
+      "password": "Admin@123",
+      "firstName": "Admin",
+      "lastName": "User",
+      "email": "adminuser@example.com"
+    }
+  },
+  "profileUsers": {
+    "readerUser": {
+      "username": "readeruser",
+      "password": "Reader@123",
+      "firstName": "Reader",
+      "lastName": "One",
+      "email": "reader.one@example.com"
+    }
+  }
+}

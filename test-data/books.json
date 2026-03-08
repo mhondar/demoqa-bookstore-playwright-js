@@ -1,0 +1,20 @@
+{
+  "searchTerms": {
+    "exactTitle": "Git Pocket Guide",
+    "partialTitle": "JavaScript",
+    "author": "Richard E. Silverman",
+    "noResults": "NonExistingAutomationBook"
+  },
+  "books": {
+    "gitPocketGuide": {
+      "isbn": "9781449325862",
+      "title": "Git Pocket Guide",
+      "author": "Richard E. Silverman"
+    },
+    "learningJavaScriptDesignPatterns": {
+      "isbn": "9781449331818",
+      "title": "Learning JavaScript Design Patterns",
+      "author": "Addy Osmani"
+    }
+  }
+}

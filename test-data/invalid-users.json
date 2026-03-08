@@ -1,0 +1,29 @@
+{
+  "invalidLoginScenarios": {
+    "wrongPassword": {
+      "username": "testuser",
+      "password": "WrongPass@123",
+      "expectedMessage": "Invalid username or password!"
+    },
+    "wrongUsername": {
+      "username": "unknownuser",
+      "password": "Test@123",
+      "expectedMessage": "Invalid username or password!"
+    },
+    "emptyUsername": {
+      "username": "",
+      "password": "Test@123",
+      "expectedMessage": "UserName is required"
+    },
+    "emptyPassword": {
+      "username": "testuser",
+      "password": "",
+      "expectedMessage": "Password is required"
+    },
+    "emptyCredentials": {
+      "username": "",
+      "password": "",
+      "expectedMessage": "UserName is required"
+    }
+  }
+}
