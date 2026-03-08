@@ -9,8 +9,8 @@ This checklist tracks which documented test cases are already automated in execu
 - `[ ]` Not automated yet
 
 **Current status**
-- Automated: `8 / 77`
-- Pending: `69 / 77`
+- Automated: `8 / 75`
+- Pending: `67 / 75`
 
 **Automation sources reviewed**
 - `tests/auth/login.spec.js`
@@ -27,8 +27,6 @@ This checklist tracks which documented test cases are already automated in execu
 - [x] `TC-REG-E2E-003` — Login with Empty Fields
 - [x] `TC-SMK-LG-004` — Validate login page loads
 - [x] `TC-SMK-LG-005` — Validate login form controls are visible
-- [ ] `TC-CRT-LG-006` — Validate login with valid credentials
-- [ ] `TC-CRT-LG-007` — Validate login with invalid user
 - [ ] `TC-CRT-LG-008` — Validate login with invalid password
 - [ ] `TC-CRT-LG-009` — Validate navigation from login to registration
 - [ ] `TC-REG-LG-010` — Validate login with empty username

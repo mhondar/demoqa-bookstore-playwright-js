@@ -21,8 +21,6 @@ The catalog is aligned with the current global numbering strategy used in `docs/
 - [`TC-REG-E2E-003` — Login with Empty Fields](../test-cases/e2e/e2e-test-cases.md#tc-reg-e2e-003)
 - [`TC-SMK-LG-004` — Validate login page loads](../test-cases/auth/login-test-cases.md#tc-smk-lg-004)
 - [`TC-SMK-LG-005` — Validate login form controls are visible](../test-cases/auth/login-test-cases.md#tc-smk-lg-005)
-- [`TC-CRT-LG-006` — Validate login with valid credentials](../test-cases/auth/login-test-cases.md#tc-crt-lg-006)
-- [`TC-CRT-LG-007` — Validate login with invalid user](../test-cases/auth/login-test-cases.md#tc-crt-lg-007)
 - [`TC-CRT-LG-008` — Validate login with invalid password](../test-cases/auth/login-test-cases.md#tc-crt-lg-008)
 - [`TC-CRT-LG-009` — Validate navigation from login to registration](../test-cases/auth/login-test-cases.md#tc-crt-lg-009)
 - [`TC-REG-LG-010` — Validate login with empty username](../test-cases/auth/login-test-cases.md#tc-reg-lg-010)
@@ -132,6 +130,6 @@ The catalog is aligned with the current global numbering strategy used in `docs/
 
 ## Summary
 
-- Total documented test cases: `77`
+- Total documented test cases: `75`
 - Global numbering range: `001` → `077`
 - Source of truth for content details remains under `docs/test-cases/`

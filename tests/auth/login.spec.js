@@ -6,7 +6,6 @@ const { ValidationHelpers } = require('../../utils');
 const invalidUsersData = require('../../test-data/invalid-users.json');
 
 test.describe('Login', () => {
- 
   test('TC-CRT-E2E-001 Valid Login @critical @login', async ({ page }) => {
     const loginPage = new LoginPage(page);
     const profilePage = new ProfilePage(page);
