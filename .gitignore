@@ -4,6 +4,7 @@ node_modules/
 # Playwright reports and artifacts
 test-results/
 playwright-report/
+reports/
 playwright/.cache/
 
 # Screenshots, videos, and traces
