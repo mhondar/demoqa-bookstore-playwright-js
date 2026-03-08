@@ -640,7 +640,7 @@ Inside a page class:
 - acceptable: return values / expose locator handles
 - avoid: multi-step `expect()` validations and business rule assertions
 
-Use test files for validation clarity and better reporting.
+Use test files for validation clarity and better failure diagnosis.
 
 ---
 

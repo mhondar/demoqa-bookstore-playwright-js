@@ -401,20 +401,26 @@ npx playwright test tests/bookstore/book-search.spec.js
 
 ## Reports
 
-After running tests, Playwright generates an **HTML report**.
+This project uses the **Playwright HTML Reporter**.
 
-Open the report with:
+After running tests, open the report with:
+
+```bash
+npm run report
+```
+
+You can also open it directly with:
 
 ```bash
 npx playwright show-report
 ```
 
-The report includes:
+The report is useful for reviewing:
 
-- Test results
-- Execution time
-- Screenshots
-- Traces (when enabled)
+- suite and test results
+- execution duration
+- screenshots captured on failure
+- retained trace attachments for failed tests
 
 ---
 
@@ -423,7 +429,8 @@ The report includes:
 Playwright provides powerful debugging tools:
 
 - Playwright UI mode
-- Trace Viewer
+- HTML report for post-run analysis
+- Retained traces on failure
 - Screenshots on failure
 - Video recordings
 - Interactive debugging
@@ -434,6 +441,23 @@ Example:
 npx playwright test --ui
 ```
 
+### Reviewing trace failures
+
+The framework keeps traces for failed tests with `trace: 'retain-on-failure'` in Playwright configuration.
+
+Recommended review flow:
+
+1. run the target suite or full test command
+2. open the HTML report with `npm run report`
+3. open the failed test entry
+4. inspect the attached trace, screenshot, and step timeline
+
+If you need to open a saved trace directly, use:
+
+```bash
+npx playwright show-trace path/to/trace.zip
+```
+
 ---
 
 ## CI/CD (Planned)
@@ -442,7 +466,7 @@ The project will later include **GitHub Actions integration** to:
 
 - Run tests automatically
 - Generate reports
-- Upload artifacts
+- Publish pass/fail feedback
 
 ---
 
@@ -455,7 +479,6 @@ Planned enhancements include:
 - Custom fixtures
 - Service layer abstraction
 - API testing
-- Allure reporting integration
 
 ---
 
