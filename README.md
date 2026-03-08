@@ -156,7 +156,7 @@ Quick checks to verify that critical flows work:
 Clone the repository:
 
 ```bash
-git clone https://github.com/<your-user>/demoqa-bookstore-playwright-js.git
+git clone https://github.com/mhondar/demoqa-bookstore-playwright-js.git
 ```
 
 Install dependencies:
