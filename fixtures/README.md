@@ -1,34 +1,54 @@
 # Fixtures Directory
 
-This directory contains test fixtures and setup utilities for Playwright tests.
+This directory contains reusable Playwright fixtures for the framework.
 
-## Purpose
+## Available Fixture
 
-Fixtures are used to:
+### `fixtures/auth.js`
 
-- Set up test data and state
-- Configure page objects
-- Handle authentication
-- Prepare test environment
+Provides a real authentication fixture based on the current UI login flow.
+
+Exports:
+
+- `test`: extended Playwright test object
+- `expect`: Playwright expect
+- `loginAs(page, credentials?)`: reusable login helper
+
+Available injected fixtures:
+
+- `authenticatedPage`: a Playwright `page` already logged in with the configured valid user
+- `authenticatedProfilePage`: a ready-to-use `ProfilePage` after successful login
+- `authCredentials`: configurable credentials option, defaulting to `config.credentials.valid`
 
 ## Usage
 
 ```javascript
-import { test } from '@playwright/test';
-import { authenticatedUser } from '../fixtures/auth';
+const { test, expect } = require('../../fixtures/auth');
 
-test.describe('Authenticated Tests', () => {
-  test.use({ storageState: authenticatedUser });
-
-  test('should access protected page', async ({ page }) => {
-    // Test code here
-  });
+test('authenticated user can access profile', async ({
+  authenticatedPage,
+  authenticatedProfilePage,
+}) => {
+  await expect(authenticatedProfilePage.usernameValue).toBeVisible();
+  await expect(authenticatedPage).toHaveURL(/\/profile/);
 });
 ```
 
-## Common Fixtures
+## Override credentials
 
-- Authentication fixtures
-- Page object fixtures
-- API client fixtures
-- Database fixtures
+```javascript
+const { test } = require('../../fixtures/auth');
+
+test.use({
+  authCredentials: {
+    username: 'testuser',
+    password: 'Test@123',
+  },
+});
+```
+
+## Notes
+
+- The fixture uses the existing `LoginPage` and `ProfilePage` page objects.
+- It is useful for tests that should start already authenticated.
+- It avoids duplicating the login steps across specs.

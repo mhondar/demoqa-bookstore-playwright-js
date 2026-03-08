@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('../../fixtures/auth');
 const config = require('../../config/global');
 const BookStorePage = require('../../pages/BookStorePage');
 const LoginPage = require('../../pages/LoginPage');
@@ -468,22 +468,19 @@ test.describe('Login', () => {
     });
   });
 
-  test('TC-CRT-LG-011 Validate logout @critical @login', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const profilePage = new ProfilePage(page);
-    const credentials = config.credentials.valid;
+  test('TC-CRT-LG-011 Validate logout @critical @login', async ({
+    authenticatedPage,
+    authenticatedProfilePage,
+  }) => {
+    const loginPage = new LoginPage(authenticatedPage);
+    const profilePage = authenticatedProfilePage;
 
-    await test.step('Authenticate with valid credentials', async () => {
-      await loginPage.goTo();
-      await loginPage.waitForLoaded();
-      await loginPage.login(credentials.username, credentials.password);
-
+    await test.step('Reuse an authenticated session', async () => {
       await ValidationHelpers.expectUrlContains(
-        page,
+        authenticatedPage,
         profilePage.profilePath,
         'Successful login should redirect the user to the profile area before logout'
       );
-      await profilePage.waitForLoaded();
       await ValidationHelpers.expectVisible(
         profilePage.logoutButton,
         'Logout action should be visible for an authenticated user'
@@ -496,7 +493,7 @@ test.describe('Login', () => {
 
     await test.step('Verify the session is cleared and the user returns to an unauthenticated state', async () => {
       await ValidationHelpers.expectUrlContains(
-        page,
+        authenticatedPage,
         loginPage.loginPath,
         'Logout should return the user to the login path'
       );
@@ -510,7 +507,7 @@ test.describe('Login', () => {
         'Logout action should no longer be visible after the session is cleared'
       ).toBeHidden();
       await expect(
-        page,
+        authenticatedPage,
         'Logged-out user should no longer remain on the authenticated profile path'
       ).not.toHaveURL(new RegExp(`${profilePage.profilePath}$`));
     });

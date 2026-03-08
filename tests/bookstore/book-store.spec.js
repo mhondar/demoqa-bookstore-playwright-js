@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('../../fixtures/auth');
 const BookStorePage = require('../../pages/BookStorePage');
 const { ValidationHelpers } = require('../../utils');
 const booksData = require('../../test-data/books.json');

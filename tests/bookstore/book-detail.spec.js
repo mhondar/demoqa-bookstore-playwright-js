@@ -1,9 +1,6 @@
-const { test, expect } = require('@playwright/test');
-const config = require('../../config/global');
+const { test, expect } = require('../../fixtures/auth');
 const BookDetailPage = require('../../pages/BookDetailPage');
 const BookStorePage = require('../../pages/BookStorePage');
-const LoginPage = require('../../pages/LoginPage');
-const ProfilePage = require('../../pages/ProfilePage');
 const { BookStoreApiHelpers, ValidationHelpers } = require('../../utils');
 const booksData = require('../../test-data/books.json');
 
@@ -54,43 +51,33 @@ test.describe('Book Detail', () => {
   });
 
   test('TC-REG-E2E-033 Add Book to Collection @regression @bookstore @collection', async ({
-    page,
+    authenticatedPage,
+    authenticatedProfilePage,
     request,
   }) => {
     test.slow();
 
-    const loginPage = new LoginPage(page);
-    const profilePage = new ProfilePage(page);
-    const bookStorePage = new BookStorePage(page);
-    const bookDetailPage = new BookDetailPage(page);
-    const credentials = config.credentials.valid;
+    const bookStorePage = new BookStorePage(authenticatedPage);
+    const bookDetailPage = new BookDetailPage(authenticatedPage);
+    const profilePage = authenticatedProfilePage;
     const targetBook = booksData.collectionData.booksToAdd.primaryAddBook;
     let addCollectionDialogMessage = null;
     let authSession;
     let originalCollectionIsbns = [];
 
     try {
-      await test.step('Authenticate with a valid user and normalize the collection precondition', async () => {
-        await loginPage.goTo();
-        await loginPage.waitForLoaded();
-        await loginPage.login(credentials.username, credentials.password);
-
+      await test.step('Reuse an authenticated session and normalize the collection precondition', async () => {
         await ValidationHelpers.expectUrlContains(
-          page,
+          authenticatedPage,
           profilePage.profilePath,
           'Successful login should reach the profile page before validating collection state'
         );
-        await profilePage.waitForLoaded();
         await ValidationHelpers.expectVisible(
           profilePage.logoutButton,
           'Authenticated profile should expose the logout action before add-to-collection setup'
         );
-        await expect(
-          profilePage.usernameValue,
-          'Authenticated profile should display the logged-in username before collection setup'
-        ).toHaveText(credentials.username);
 
-        authSession = await BookStoreApiHelpers.getAuthSessionFromPage(page);
+        authSession = await BookStoreApiHelpers.getAuthSessionFromPage(authenticatedPage);
         originalCollectionIsbns = await BookStoreApiHelpers.getCollectionIsbns(request, authSession);
 
         await BookStoreApiHelpers.replaceCollection(request, authSession, []);
@@ -116,7 +103,7 @@ test.describe('Book Detail', () => {
       });
 
       await test.step('Add the selected book to the collection', async () => {
-        const dialogPromise = page.waitForEvent('dialog', { timeout: 5000 }).then(async dialog => {
+        const dialogPromise = authenticatedPage.waitForEvent('dialog', { timeout: 5000 }).then(async dialog => {
           addCollectionDialogMessage = dialog.message();
           await dialog.accept();
         });
@@ -351,39 +338,33 @@ test.describe('Book Detail', () => {
   });
 
   test('TC-REG-BD-039 Validate add book to collection with authenticated user @regression @bookstore @book-detail', async ({
-    page,
+    authenticatedPage,
+    authenticatedProfilePage,
     request,
   }) => {
     test.slow();
 
-    const loginPage = new LoginPage(page);
-    const profilePage = new ProfilePage(page);
-    const bookStorePage = new BookStorePage(page);
-    const bookDetailPage = new BookDetailPage(page);
-    const credentials = config.credentials.valid;
+    const profilePage = authenticatedProfilePage;
+    const bookStorePage = new BookStorePage(authenticatedPage);
+    const bookDetailPage = new BookDetailPage(authenticatedPage);
     const targetBook = booksData.collectionData.booksToAdd.primaryAddBook;
     let addCollectionDialogMessage = null;
     let authSession;
     let originalCollectionIsbns = [];
 
     try {
-      await test.step('Authenticate the user and control the collection state', async () => {
-        await loginPage.goTo();
-        await loginPage.waitForLoaded();
-        await loginPage.login(credentials.username, credentials.password);
-
+      await test.step('Reuse the authenticated session and control the collection state', async () => {
         await ValidationHelpers.expectUrlContains(
-          page,
+          authenticatedPage,
           profilePage.profilePath,
           'Authenticated add-to-collection should begin from a valid logged-in profile session'
         );
-        await profilePage.waitForLoaded();
         await ValidationHelpers.expectVisible(
           profilePage.logoutButton,
           'Authenticated profile should expose the logout action before opening Book Detail'
         );
 
-        authSession = await BookStoreApiHelpers.getAuthSessionFromPage(page);
+        authSession = await BookStoreApiHelpers.getAuthSessionFromPage(authenticatedPage);
         originalCollectionIsbns = await BookStoreApiHelpers.getCollectionIsbns(request, authSession);
 
         await BookStoreApiHelpers.replaceCollection(request, authSession, []);
@@ -402,7 +383,7 @@ test.describe('Book Detail', () => {
       });
 
       await test.step('Add the book from the detail page', async () => {
-        const dialogPromise = page.waitForEvent('dialog', { timeout: 5000 }).then(async dialog => {
+        const dialogPromise = authenticatedPage.waitForEvent('dialog', { timeout: 5000 }).then(async dialog => {
           addCollectionDialogMessage = dialog.message();
           await dialog.accept();
         });

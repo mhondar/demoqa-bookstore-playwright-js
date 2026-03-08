@@ -1,36 +1,29 @@
 # Auth Directory
 
-This directory contains authentication helpers and session state management.
+This directory is reserved for future authentication assets such as persisted session states or auth-specific helpers.
 
-## Purpose
+## Current implementation
 
-- Store authentication session states
-- Manage login/logout workflows
-- Handle authentication tokens
-- Provide authenticated test fixtures
+The active reusable authentication fixture lives in `fixtures/auth.js`.
 
-## Usage
+Use it like this:
 
 ```javascript
-// Load saved session state
-const authState = require('../auth/user-session.json');
+const { test } = require('../fixtures/auth');
 
-// Use in test
-test.use({ storageState: authState });
-
-// Or create authenticated fixture
-import { authenticatedPage } from '../auth/authFixtures';
+test('authenticated user can open profile', async ({ authenticatedPage }) => {
+	await authenticatedPage.goto('/profile');
+});
 ```
 
-## Files
+## Why the fixture lives in `fixtures/`
 
-- `user-session.json` - Saved browser session state
-- `authHelpers.js` - Authentication utility functions
-- `authFixtures.js` - Playwright fixtures for auth
+- It matches Playwright's fixture extension pattern.
+- It keeps reusable test context separate from page objects and raw test specs.
+- It avoids misleading placeholder files in `auth/` that were not implemented.
 
 ## Security
 
-- Never commit sensitive authentication data
-- Use environment variables for credentials
-- Store session states securely
-- Rotate authentication tokens regularly
+- Never commit sensitive authentication data.
+- Prefer environment variables for credentials.
+- Avoid storing real session states in the repository.
