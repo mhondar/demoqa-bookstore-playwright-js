@@ -27,8 +27,13 @@ on:
         required: false
         default: ''
         type: string
+      test_case:
+        description: 'Optional test case id or exact test filter (example: TC-REG-BD-039)'
+        required: false
+        default: ''
+        type: string
       grep:
-        description: 'Optional grep pattern or test case id (example: TC-REG-BD-039)'
+        description: 'Optional extra grep pattern or tag (example: @book-detail)'
         required: false
         default: ''
         type: string
@@ -155,6 +160,7 @@ jobs:
           cmd='npx playwright test'
           suite='${{ inputs.suite }}'
           test_path='${{ inputs.test_path }}'
+          test_case='${{ inputs.test_case }}'
           custom_grep='${{ inputs.grep }}'
           project='${{ inputs.project }}'
           grep_expr=''
@@ -163,6 +169,12 @@ jobs:
             grep_expr='@smoke'
           elif [[ "$suite" == 'regression' ]]; then
             grep_expr='@regression'
+          fi
+
+          if [[ -n "$test_case" && -n "$grep_expr" ]]; then
+            grep_expr="(?=.*$grep_expr)(?=.*$test_case)"
+          elif [[ -n "$test_case" ]]; then
+            grep_expr="$test_case"
           fi
 
           if [[ -n "$custom_grep" && -n "$grep_expr" ]]; then

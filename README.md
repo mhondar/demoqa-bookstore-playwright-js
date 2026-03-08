@@ -550,7 +550,8 @@ For manual selective runs, the workflow supports these inputs:
 
 - `suite`: `all`, `smoke`, or `regression`
 - `test_path`: a specific spec path such as `tests/bookstore/book-detail.spec.js`
-- `grep`: a test id, tag, or regex filter such as `TC-REG-BD-039` or `@book-detail`
+- `test_case`: a specific test case id or exact filter such as `TC-REG-BD-039`
+- `grep`: an extra tag or regex filter such as `@book-detail`
 - `project`: `all`, `chromium`, `firefox`, `webkit`, `Mobile Chrome`, or `Mobile Safari`
 
 Example selective executions from GitHub Actions manual dispatch:
