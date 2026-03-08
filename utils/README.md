@@ -22,10 +22,10 @@ This directory contains reusable helpers that keep tests and page objects clean.
 
 ```javascript
 const {
-	NavigationHelpers,
-	DataHelpers,
-	ValidationHelpers,
-	Logger,
+  NavigationHelpers,
+  DataHelpers,
+  ValidationHelpers,
+  Logger,
 } = require('../utils');
 
 const user = DataHelpers.buildDynamicUser();

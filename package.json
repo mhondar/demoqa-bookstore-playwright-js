@@ -17,8 +17,8 @@
     "test:mobile:ui": "playwright test --ui --project=\"Mobile Chrome\"",
     "lint": "eslint config/ tests/ utils/ *.js",
     "lint:fix": "eslint config/ tests/ utils/ *.js --fix",
-    "format": "prettier --write config/ tests/ utils/ *.js *.json",
-    "format:check": "prettier --check config/ tests/ utils/ *.js *.json",
+    "format": "prettier --write config/ tests/ utils/ *.js *.json *.md **/*.md",
+    "format:check": "prettier --check config/ tests/ utils/ *.js *.json *.md **/*.md",
     "quality": "npm run lint && npm run format:check"
   },
   "repository": {

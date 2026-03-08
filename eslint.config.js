@@ -5,7 +5,7 @@ module.exports = [
   {
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'module',
+      sourceType: 'commonjs',
       globals: {
         // Node.js globals
         console: 'readonly',
@@ -35,6 +35,7 @@ module.exports = [
       'no-console': 'off',
       'prefer-const': 'error',
       'no-var': 'error',
+      eqeqeq: ['error', 'always'],
     },
   },
   {
@@ -59,6 +60,7 @@ module.exports = [
       'screenshots/',
       'videos/',
       'traces/',
+      'reports/',
       'coverage/',
       '.nyc_output/',
       'allure-results/',

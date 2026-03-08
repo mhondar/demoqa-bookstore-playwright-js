@@ -5,6 +5,7 @@ This directory contains test fixtures and setup utilities for Playwright tests.
 ## Purpose
 
 Fixtures are used to:
+
 - Set up test data and state
 - Configure page objects
 - Handle authentication

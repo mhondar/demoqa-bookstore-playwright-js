@@ -17,32 +17,76 @@ https://demoqa.com/books
 
 The main objectives of this project are:
 
-* Practice building a **test automation framework from scratch**
-* Apply **Page Object Model (POM)** design
-* Design **maintainable and scalable test architecture**
-* Implement **UI end-to-end tests**
-* Implement **negative and positive test scenarios**
-* Manage **test data and environment configuration**
-* Generate **reports and debugging artifacts**
-* Prepare the project for **CI/CD execution**
+- Practice building a **test automation framework from scratch**
+- Apply **Page Object Model (POM)** design
+- Design **maintainable and scalable test architecture**
+- Implement **UI end-to-end tests**
+- Implement **negative and positive test scenarios**
+- Manage **test data and environment configuration**
+- Generate **reports and debugging artifacts**
+- Prepare the project for **CI/CD execution**
 
 ---
 
 ## Technology Stack
 
-* **Playwright**
-* **JavaScript (Node.js)**
-* **Playwright Test Runner**
-* **HTML Reporter**
-* **ESLint** - Code linting
-* **Prettier** - Code formatting
-* **Faker.js** - Test data generation
-* **dotenv** - Environment variables
-* **GitHub**
+- **Playwright**
+- **JavaScript (Node.js)**
+- **Playwright Test Runner**
+- **HTML Reporter**
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Faker.js** - Test data generation
+- **dotenv** - Environment variables
+- **GitHub**
 
 Optional additions planned:
 
-* GitHub Actions CI
+- GitHub Actions CI
+
+---
+
+## Code Quality
+
+This project uses both **ESLint** and **Prettier**.
+
+### ESLint
+
+ESLint is used to catch common JavaScript issues and enforce a small practical ruleset.
+
+Current baseline:
+
+- `prefer-const`
+- `no-var`
+- `eqeqeq`
+- `no-unused-vars` as warning
+
+Run:
+
+```bash
+npm run lint
+npm run lint:fix
+```
+
+### Prettier
+
+Prettier is used to standardize formatting across the project.
+
+Run:
+
+```bash
+npm run format
+npm run format:check
+```
+
+### Recommended workflow
+
+Before pushing changes:
+
+```bash
+npm run quality
+npm test
+```
 
 ---
 
@@ -52,12 +96,12 @@ Optional additions planned:
 
 Main modules used in this project:
 
-* Book Store
-* Login
-* User Profile
-* Book Collection
-* Book Details
-* Search functionality
+- Book Store
+- Login
+- User Profile
+- Book Collection
+- Book Details
+- Search functionality
 
 Website:
 https://demoqa.com/books
@@ -105,12 +149,12 @@ demoqa-bookstore-playwright-js
 
 Key architecture principles:
 
-* Page Object Model for UI abstraction
-* Separation between tests, pages, and utilities
-* Reusable helpers
-* Centralized configuration management
-* Independent test cases
-* Clear test suite organization
+- Page Object Model for UI abstraction
+- Separation between tests, pages, and utilities
+- Reusable helpers
+- Centralized configuration management
+- Independent test cases
+- Clear test suite organization
 
 ---
 
@@ -132,10 +176,11 @@ await page.goto(URLS.profile);
 ```
 
 **Benefits:**
-* Single source of truth for URLs
-* Easy environment switching
-* Consistent URL usage across tests
-* Better maintainability
+
+- Single source of truth for URLs
+- Easy environment switching
+- Consistent URL usage across tests
+- Better maintainability
 
 See `config/README.md` for detailed usage examples.
 
@@ -165,18 +210,20 @@ if (config.environment.isCI) {
 ```
 
 **Configuration Categories:**
-* **Timeouts**: Action, navigation, expect, and test timeouts
-* **Browser**: Default browser, headless mode, viewport settings
-* **Test Data**: Centralized test data generation utilities
-* **Environment**: Environment name, CI detection, base URL
-* **Execution**: Workers, retries, parallel execution settings
-* **Media**: Screenshot, video, and trace collection settings
+
+- **Timeouts**: Action, navigation, expect, and test timeouts
+- **Browser**: Default browser, headless mode, viewport settings
+- **Test Data**: Centralized test data generation utilities
+- **Environment**: Environment name, CI detection, base URL
+- **Execution**: Workers, retries, parallel execution settings
+- **Media**: Screenshot, video, and trace collection settings
 
 **Benefits:**
-* Centralized configuration management
-* Environment-aware settings
-* Easy customization via environment variables
-* Consistent settings across all tests
+
+- Centralized configuration management
+- Environment-aware settings
+- Easy customization via environment variables
+- Consistent settings across all tests
 
 ---
 
@@ -188,37 +235,37 @@ Tests are grouped by **functional areas** and **execution purpose**.
 
 Quick checks to verify that critical flows work:
 
-* Application loads
-* Book store page loads
-* Basic search works
-* Login works
+- Application loads
+- Book store page loads
+- Basic search works
+- Login works
 
 ### Functional Tests
 
 #### Authentication
 
-* Valid login
-* Invalid login
-* Empty credentials
-* Logout
+- Valid login
+- Invalid login
+- Empty credentials
+- Logout
 
 #### Book Store
 
-* Book list loads
-* Search books
-* Navigate to book detail
+- Book list loads
+- Search books
+- Navigate to book detail
 
 #### User Profile
 
-* Access authenticated profile
-* Add book to collection
-* Remove book from collection
+- Access authenticated profile
+- Add book to collection
+- Remove book from collection
 
 ### Negative Scenarios
 
-* Invalid login attempts
-* Empty fields
-* Restricted actions without authentication
+- Invalid login attempts
+- Empty fields
+- Restricted actions without authentication
 
 ---
 
@@ -228,11 +275,11 @@ To maintain consistency and code quality across the project, a comprehensive set
 
 This project follows strict standards for:
 
-* **File naming** (PascalCase for pages, kebab-case for tests and files)
-* **Test naming** (descriptive, readable test titles)
-* **Branching strategy** (feature, fix, chore, docs branches)
-* **Commit messages** (Conventional Commits format)
-* **Language** (English across the entire project)
+- **File naming** (PascalCase for pages, kebab-case for tests and files)
+- **Test naming** (descriptive, readable test titles)
+- **Branching strategy** (feature, fix, chore, docs branches)
+- **Commit messages** (Conventional Commits format)
+- **Language** (English across the entire project)
 
 **See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed conventions and examples.**
 
@@ -269,18 +316,21 @@ The project includes several development tools to maintain code quality and cons
 ### Code Quality
 
 **Linting with ESLint:**
+
 ```bash
 npm run lint          # Check code quality
 npm run lint:fix      # Fix auto-fixable issues
 ```
 
 **Formatting with Prettier:**
+
 ```bash
 npm run format        # Format all code
 npm run format:check  # Check if code is formatted
 ```
 
 **Quality Check (combined):**
+
 ```bash
 npm run quality       # Run linting and formatting checks
 ```
@@ -311,6 +361,7 @@ cp .env.example .env
 ```
 
 Available environment variables:
+
 - `BASE_URL` - Application base URL
 - `TEST_ENV` - Test environment (local, staging, prod)
 - `BROWSER` - Default browser (chromium, firefox, webkit)
@@ -358,10 +409,10 @@ npx playwright show-report
 
 The report includes:
 
-* Test results
-* Execution time
-* Screenshots
-* Traces (when enabled)
+- Test results
+- Execution time
+- Screenshots
+- Traces (when enabled)
 
 ---
 
@@ -369,11 +420,11 @@ The report includes:
 
 Playwright provides powerful debugging tools:
 
-* Playwright UI mode
-* Trace Viewer
-* Screenshots on failure
-* Video recordings
-* Interactive debugging
+- Playwright UI mode
+- Trace Viewer
+- Screenshots on failure
+- Video recordings
+- Interactive debugging
 
 Example:
 
@@ -387,9 +438,9 @@ npx playwright test --ui
 
 The project will later include **GitHub Actions integration** to:
 
-* Run tests automatically
-* Generate reports
-* Upload artifacts
+- Run tests automatically
+- Generate reports
+- Upload artifacts
 
 ---
 
@@ -397,12 +448,12 @@ The project will later include **GitHub Actions integration** to:
 
 Planned enhancements include:
 
-* Cross-browser testing
-* Data-driven testing
-* Custom fixtures
-* Service layer abstraction
-* API testing
-* Allure reporting integration
+- Cross-browser testing
+- Data-driven testing
+- Custom fixtures
+- Service layer abstraction
+- API testing
+- Allure reporting integration
 
 ---
 

@@ -16,11 +16,11 @@ Use **PascalCase** for Page Objects and classes, and **kebab-case** for test fil
 
 #### Rules
 
-* **Page Objects / classes** → `PascalCase`
-* **Test files** → `kebab-case`
-* **Utility files** → `kebab-case`
-* **Data files** → `kebab-case`
-* **Folders** → `kebab-case`
+- **Page Objects / classes** → `PascalCase`
+- **Test files** → `kebab-case`
+- **Utility files** → `kebab-case`
+- **Data files** → `kebab-case`
+- **Folders** → `kebab-case`
 
 #### Examples
 
@@ -78,8 +78,8 @@ config/
 
 To avoid chaos, use this exact rule:
 
-* `PascalCase` for **page classes**
-* `kebab-case` for **spec files, JSON files, and folders, plain helper modules**
+- `PascalCase` for **page classes**
+- `kebab-case` for **spec files, JSON files, and folders, plain helper modules**
 
 That gives good visual separation.
 
@@ -89,9 +89,9 @@ That gives good visual separation.
 
 Test names should describe:
 
-* **what is being tested**
-* **under which condition**
-* **what is expected**
+- **what is being tested**
+- **under which condition**
+- **what is expected**
 
 A good test name should read almost like documentation.
 
@@ -128,11 +128,15 @@ test('should login successfully with valid credentials', async ({ page }) => {
   // ...
 });
 
-test('should display no matching records when searching with an invalid keyword', async ({ page }) => {
+test('should display no matching records when searching with an invalid keyword', async ({
+  page,
+}) => {
   // ...
 });
 
-test('should redirect unauthenticated users to the login page', async ({ page }) => {
+test('should redirect unauthenticated users to the login page', async ({
+  page,
+}) => {
   // ...
 });
 ```
@@ -163,8 +167,8 @@ Keep it simple. Fancy Git flows are often overkill for a practice framework.
 
 #### Main branches
 
-* `main` → stable branch
-* optional: `develop` → integration branch if later needed
+- `main` → stable branch
+- optional: `develop` → integration branch if later needed
 
 For now, **main + feature branches** is enough.
 
@@ -217,10 +221,10 @@ docs/add-framework-architecture
 
 For this project, use:
 
-* `feature/` for framework or automation work
-* `fix/` for locator/test/config fixes
-* `chore/` for maintenance
-* `docs/` for documentation
+- `feature/` for framework or automation work
+- `fix/` for locator/test/config fixes
+- `chore/` for maintenance
+- `docs/` for documentation
 
 That is enough and keeps history readable.
 
@@ -238,12 +242,12 @@ type: short description
 
 #### Main commit types
 
-* `feat:` → new functionality
-* `fix:` → bug fix
-* `chore:` → maintenance/configuration
-* `docs:` → documentation
-* `refactor:` → code improvement without behavior change
-* `test:` → test-related additions or updates
+- `feat:` → new functionality
+- `fix:` → bug fix
+- `chore:` → maintenance/configuration
+- `docs:` → documentation
+- `refactor:` → code improvement without behavior change
+- `test:` → test-related additions or updates
 
 #### Examples
 
@@ -269,15 +273,14 @@ test: add negative login scenarios
 
 #### Commit writing rules
 
-* Use **lowercase**
-* Keep message short and clear
-* One logical change per commit
-* Do not write vague commits like:
-
-  * `update stuff`
-  * `changes`
-  * `fix`
-  * `new test`
+- Use **lowercase**
+- Keep message short and clear
+- One logical change per commit
+- Do not write vague commits like:
+  - `update stuff`
+  - `changes`
+  - `fix`
+  - `new test`
 
 Those are useless later.
 
@@ -289,17 +292,17 @@ This should be **English everywhere**.
 
 #### Use English for:
 
-* code
-* file names
-* folder names
-* class names
-* variables
-* functions
-* comments
-* test names
-* documentation
-* commit messages
-* branch names
+- code
+- file names
+- folder names
+- class names
+- variables
+- functions
+- comments
+- test names
+- documentation
+- commit messages
+- branch names
 
 #### Example
 
@@ -328,16 +331,16 @@ Use these rules consistently across all classes in `pages/`.
 
 #### Rules for creating Page Objects
 
-* One page class per functional screen/component.
-* Constructor should only keep `page` and initialize locators.
-* Use `BasePage` only for shared behavior used by multiple page classes.
-* Keep methods small and action-oriented (`clickLogin()`, `searchBook()`, `addToCollection()`).
+- One page class per functional screen/component.
+- Constructor should only keep `page` and initialize locators.
+- Use `BasePage` only for shared behavior used by multiple page classes.
+- Keep methods small and action-oriented (`clickLogin()`, `searchBook()`, `addToCollection()`).
 
 #### What belongs inside a page class
 
-* Page-specific locators
-* Reusable actions and flows on that page
-* Small helper getters (for text/state retrieval)
+- Page-specific locators
+- Reusable actions and flows on that page
+- Small helper getters (for text/state retrieval)
 
 Do not include suite orchestration logic in page classes.
 
@@ -370,8 +373,8 @@ Keep business assertions in test files (`tests/**/*.spec.js`).
 
 Inside a page class:
 
-* acceptable: return values / expose locator handles
-* avoid: multi-step `expect()` validations and business rule assertions
+- acceptable: return values / expose locator handles
+- avoid: multi-step `expect()` validations and business rule assertions
 
 Use test files for validation clarity and better reporting.
 
@@ -385,10 +388,10 @@ Utilities in `utils/` should support reuse across multiple test modules.
 
 Keep shared navigation logic in a dedicated helper module:
 
-* `goToHome(page)`
-* `goToLogin(page)`
-* `goToBooks(page)`
-* `goToProfile(page)`
+- `goToHome(page)`
+- `goToLogin(page)`
+- `goToBooks(page)`
+- `goToProfile(page)`
 
 Use these only for generic routing behavior.
 
@@ -396,10 +399,10 @@ Use these only for generic routing behavior.
 
 Use a helper for generating stable dynamic data:
 
-* unique ids
-* dynamic users
-* dynamic books
-* random picks from lists
+- unique ids
+- dynamic users
+- dynamic books
+- random picks from lists
 
 This avoids duplicate data generation logic in test files.
 
@@ -413,15 +416,15 @@ Keep validations generic and framework-level.
 
 Use a logger only if needed for diagnostics or CI troubleshooting.
 
-* support `debug`, `info`, `warn`, `error`
-* respect `LOG_LEVEL`
-* avoid noisy logs by default
+- support `debug`, `info`, `warn`, `error`
+- respect `LOG_LEVEL`
+- avoid noisy logs by default
 
 #### Boundaries
 
-* Utilities should not know business scenarios.
-* Utilities should not replace page objects.
-* Utilities should not contain full test flows.
+- Utilities should not know business scenarios.
+- Utilities should not replace page objects.
+- Utilities should not contain full test flows.
 
 ---
 
@@ -435,10 +438,10 @@ Store stable reusable datasets in `test-data/`.
 
 Examples:
 
-* `users.json`
-* `invalid-users.json`
-* `books.json`
-* `test-scenarios.json`
+- `users.json`
+- `invalid-users.json`
+- `books.json`
+- `test-scenarios.json`
 
 Use these when assertions depend on known values.
 
@@ -448,9 +451,9 @@ Use helper functions for runtime-generated data that must be unique.
 
 Examples:
 
-* dynamic usernames
-* unique emails
-* generated book objects
+- dynamic usernames
+- unique emails
+- generated book objects
 
 Keep this logic in utility modules, not inline in test files.
 
@@ -460,9 +463,9 @@ Never hardcode sensitive credentials in tests.
 
 Use:
 
-* local `.env`
-* CI secrets
-* centralized access through config
+- local `.env`
+- CI secrets
+- centralized access through config
 
 Committed test data files may contain demo values only.
 
@@ -472,12 +475,11 @@ Group negative scenarios in dedicated JSON files so they can be reused across mo
 
 Examples:
 
-* wrong password
-* empty username
-* empty password
-* invalid email format
+- wrong password
+- empty username
+- empty password
+- invalid email format
 
 This keeps tests small, readable, and consistent.
 
 ---
-
