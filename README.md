@@ -151,6 +151,24 @@ Quick checks to verify that critical flows work:
 
 ---
 
+## Conventions
+
+To maintain consistency and code quality across the project, a comprehensive set of conventions has been established.
+
+This project follows strict standards for:
+
+* **File naming** (PascalCase for pages, kebab-case for tests and files)
+* **Test naming** (descriptive, readable test titles)
+* **Branching strategy** (feature, fix, chore, docs branches)
+* **Commit messages** (Conventional Commits format)
+* **Language** (English across the entire project)
+
+**See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed conventions and examples.**
+
+These conventions ensure that the framework remains clean, professional, and maintainable as it grows.
+
+---
+
 ## Installation
 
 Clone the repository:
