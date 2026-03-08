@@ -499,18 +499,66 @@ Typical debugging flow:
 
 The project includes a basic **GitHub Actions** workflow in [.github/workflows/playwright-ci.yml](.github/workflows/playwright-ci.yml).
 
-The workflow:
+The workflow strategy is split into three paths:
 
-- installs Node.js dependencies with `npm ci`
-- installs Playwright browsers and Linux dependencies with `npx playwright install --with-deps`
-- executes the Playwright suite in CI with `npx playwright test`
-- publishes the HTML report and raw `test-results` as GitHub Actions artifacts
+- `smoke` job for fast confidence checks
+- `regression` job for deeper validation on the stable branch
+- `selective` manual job for targeted executions through `workflow_dispatch`
 
-The workflow runs on:
+Common CI steps across these jobs:
+
+- install Node.js dependencies with `npm ci`
+- install Playwright browsers and Linux dependencies with `npx playwright install --with-deps`
+- run the corresponding Playwright command for the selected suite
+- publish HTML report and `test-results` artifacts
+
+### When smoke tests run
+
+Smoke tests run automatically on:
 
 - pushes to `main`
+- pushes to `feature/**`, `fix/**`, `chore/**`, and `docs/**`
 - pull requests targeting `main`
-- manual execution through `workflow_dispatch`
+
+Smoke execution command:
+
+- `npx playwright test --grep @smoke`
+
+### When regression runs
+
+Regression runs automatically on:
+
+- pushes to `main`
+
+Regression execution command:
+
+- `npx playwright test --grep @regression`
+
+### Branch triggers
+
+Configured GitHub Actions branch triggers:
+
+- `push` on `main`
+- `push` on `feature/**`
+- `push` on `fix/**`
+- `push` on `chore/**`
+- `push` on `docs/**`
+- `pull_request` targeting `main`
+- `workflow_dispatch` for manual selective runs
+
+For manual selective runs, the workflow supports these inputs:
+
+- `suite`: `all`, `smoke`, or `regression`
+- `test_path`: a specific spec path such as `tests/bookstore/book-detail.spec.js`
+- `grep`: a test id, tag, or regex filter such as `TC-REG-BD-039` or `@book-detail`
+- `project`: `all`, `chromium`, `firefox`, `webkit`, `Mobile Chrome`, or `Mobile Safari`
+
+Example selective executions from GitHub Actions manual dispatch:
+
+- run only smoke tests
+- run only `tests/bookstore/book-detail.spec.js`
+- run `TC-REG-BD-039` on `chromium`
+- run regression tests on `Mobile Chrome`
 
 Published artifacts are useful for:
 

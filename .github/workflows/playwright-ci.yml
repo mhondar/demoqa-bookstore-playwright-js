@@ -4,14 +4,51 @@ on:
   push:
     branches:
       - main
+      - feature/**
+      - fix/**
+      - chore/**
+      - docs/**
   pull_request:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      suite:
+        description: Select the suite scope to run
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - smoke
+          - regression
+      test_path:
+        description: 'Optional relative spec path (example: tests/bookstore/book-detail.spec.js)'
+        required: false
+        default: ''
+        type: string
+      grep:
+        description: 'Optional grep pattern or test case id (example: TC-REG-BD-039)'
+        required: false
+        default: ''
+        type: string
+      project:
+        description: Optional Playwright project
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - chromium
+          - firefox
+          - webkit
+          - Mobile Chrome
+          - Mobile Safari
 
 jobs:
-  test:
+  smoke:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     timeout-minutes: 30
 
     steps:
@@ -30,14 +67,14 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests
-        run: npx playwright test
+      - name: Run smoke tests
+        run: npx playwright test --grep @smoke
 
       - name: Upload Playwright HTML report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: playwright-report-smoke
           path: playwright-report/
           retention-days: 14
 
@@ -45,6 +82,125 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-results
+          name: test-results-smoke
+          path: test-results/
+          retention-days: 14
+
+  regression:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run regression tests
+        run: npx playwright test --grep @regression
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-regression
+          path: playwright-report/
+          retention-days: 14
+
+      - name: Upload Playwright test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-regression
+          path: test-results/
+          retention-days: 14
+
+  selective:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    timeout-minutes: 45
+    env:
+      PLAYWRIGHT_CMD: npx playwright test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Build selective Playwright command
+        shell: bash
+        run: |
+          cmd='npx playwright test'
+          suite='${{ inputs.suite }}'
+          test_path='${{ inputs.test_path }}'
+          custom_grep='${{ inputs.grep }}'
+          project='${{ inputs.project }}'
+          grep_expr=''
+
+          if [[ "$suite" == 'smoke' ]]; then
+            grep_expr='@smoke'
+          elif [[ "$suite" == 'regression' ]]; then
+            grep_expr='@regression'
+          fi
+
+          if [[ -n "$custom_grep" && -n "$grep_expr" ]]; then
+            grep_expr="(?=.*$grep_expr)(?=.*$custom_grep)"
+          elif [[ -n "$custom_grep" ]]; then
+            grep_expr="$custom_grep"
+          fi
+
+          if [[ -n "$test_path" ]]; then
+            cmd="$cmd $test_path"
+          fi
+
+          if [[ -n "$grep_expr" ]]; then
+            cmd="$cmd --grep '$grep_expr'"
+          fi
+
+          if [[ "$project" != 'all' ]]; then
+            cmd="$cmd --project='$project'"
+          fi
+
+          echo "PLAYWRIGHT_CMD=$cmd" >> "$GITHUB_ENV"
+          echo "Resolved command: $cmd"
+
+      - name: Run selective Playwright tests
+        run: ${{ env.PLAYWRIGHT_CMD }}
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-selective
+          path: playwright-report/
+          retention-days: 14
+
+      - name: Upload Playwright test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-selective
           path: test-results/
           retention-days: 14
