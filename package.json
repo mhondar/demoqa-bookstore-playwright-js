@@ -7,7 +7,12 @@
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
-    "test:ui": "playwright test --ui"
+    "test:ui": "playwright test --ui",
+    "lint": "eslint config/ tests/ utils/ *.js",
+    "lint:fix": "eslint config/ tests/ utils/ *.js --fix",
+    "format": "prettier --write config/ tests/ utils/ *.js *.json",
+    "format:check": "prettier --check config/ tests/ utils/ *.js *.json",
+    "quality": "npm run lint && npm run format:check"
   },
   "repository": {
     "type": "git",
@@ -22,6 +27,11 @@
   },
   "homepage": "https://github.com/mhondar/demoqa-bookstore-playwright-js#readme",
   "devDependencies": {
-    "@playwright/test": "^1.58.2"
+    "@eslint/js": "^10.0.1",
+    "@faker-js/faker": "^10.3.0",
+    "@playwright/test": "^1.58.2",
+    "dotenv": "^17.3.1",
+    "eslint": "^10.0.3",
+    "prettier": "^3.8.1"
   }
 }

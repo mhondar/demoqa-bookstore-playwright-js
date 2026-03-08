@@ -11,14 +11,14 @@ const URLS = {
   profile: '/profile',
 
   // Book-related URLs
-  bookDetail: (isbn) => `/books?book=${isbn}`,
+  bookDetail: isbn => `/books?book=${isbn}`,
 
   // External URLs (if needed)
   github: 'https://github.com',
-  documentation: 'https://playwright.dev/docs/intro'
+  documentation: 'https://playwright.dev/docs/intro',
 };
 
 module.exports = {
   BASE_URL,
-  URLS
+  URLS,
 };

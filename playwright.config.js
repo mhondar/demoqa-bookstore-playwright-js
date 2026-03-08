@@ -2,11 +2,13 @@
 const { defineConfig, devices } = require('@playwright/test');
 const { BASE_URL } = require('./config/urls');
 
+// Load environment variables
+require('dotenv').config();
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
