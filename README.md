@@ -139,6 +139,45 @@ await page.goto(URLS.profile);
 
 See `config/README.md` for detailed usage examples.
 
+### Global Configuration
+
+The global configuration is centralized in `config/global.js` and provides access to all test settings:
+
+```javascript
+const { config } = require('../config/global');
+
+// Access URLs
+await page.goto(config.urls.books);
+
+// Access timeouts
+await page.waitForTimeout(config.timeouts.action);
+
+// Access browser settings
+const { headless, viewport } = config.browser;
+
+// Access test data
+const user = config.testData.generateUser();
+
+// Access environment settings
+if (config.environment.isCI) {
+  // CI-specific logic
+}
+```
+
+**Configuration Categories:**
+* **Timeouts**: Action, navigation, expect, and test timeouts
+* **Browser**: Default browser, headless mode, viewport settings
+* **Test Data**: Centralized test data generation utilities
+* **Environment**: Environment name, CI detection, base URL
+* **Execution**: Workers, retries, parallel execution settings
+* **Media**: Screenshot, video, and trace collection settings
+
+**Benefits:**
+* Centralized configuration management
+* Environment-aware settings
+* Easy customization via environment variables
+* Consistent settings across all tests
+
 ---
 
 ## Test Strategy
