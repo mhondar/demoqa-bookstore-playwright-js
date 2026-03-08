@@ -29,12 +29,12 @@ module.exports = defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: BASE_URL,
-    /* Retain traces for failed tests so they can be reviewed after execution */
-    trace: 'retain-on-failure',
+    /* Capture traces on the first retry to keep diagnostics focused and lightweight */
+    trace: 'on-first-retry',
     /* Take screenshot only when test fails */
     screenshot: 'only-on-failure',
-    /* Record video only when test fails */
-    video: process.env.CI ? 'retain-on-failure' : 'off',
+    /* Retain video only for failed tests, where visual playback adds diagnostic value */
+    video: 'retain-on-failure',
     /* Timeout for each action in milliseconds */
     actionTimeout: 10000,
     /* Timeout for each test in milliseconds */

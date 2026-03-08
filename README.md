@@ -420,7 +420,8 @@ The report is useful for reviewing:
 - suite and test results
 - execution duration
 - screenshots captured on failure
-- retained trace attachments for failed tests
+- trace attachments captured on first retry
+- retained video for failed tests when visual playback is useful
 
 ---
 
@@ -429,27 +430,42 @@ The report is useful for reviewing:
 Playwright provides powerful debugging tools:
 
 - Playwright UI mode
+- `--debug` for step-by-step interactive debugging
+- `--ui` for suite exploration and selective execution
 - HTML report for post-run analysis
-- Retained traces on failure
+- Trace capture on first retry
 - Screenshots on failure
-- Video recordings
+- Retained video on failure
 - Interactive debugging
 
-Example:
+Run interactive debug mode:
 
 ```bash
+npm run test:debug
+```
+
+Run UI mode:
+
+```bash
+npm run test:ui
+```
+
+You can still run the raw Playwright commands directly:
+
+```bash
+npx playwright test --debug
 npx playwright test --ui
 ```
 
 ### Reviewing trace failures
 
-The framework keeps traces for failed tests with `trace: 'retain-on-failure'` in Playwright configuration.
+The framework captures traces with `trace: 'on-first-retry'` in Playwright configuration.
 
 Recommended review flow:
 
 1. run the target suite or full test command
 2. open the HTML report with `npm run report`
-3. open the failed test entry
+3. open the retried or failed test entry
 4. inspect the attached trace, screenshot, and step timeline
 
 If you need to open a saved trace directly, use:
@@ -458,15 +474,49 @@ If you need to open a saved trace directly, use:
 npx playwright show-trace path/to/trace.zip
 ```
 
+Or with the npm script:
+
+```bash
+npm run trace -- path/to/trace.zip
+```
+
+Typical debugging flow:
+
+1. reproduce the issue with `npm run test:debug` for a single scenario
+2. use `npm run test:ui` when you want to rerun or inspect suites interactively
+3. if the failure retries, open the HTML report and inspect the attached trace
+4. if needed, open the trace zip directly with `npm run trace -- path/to/trace.zip`
+
+### Execution artifacts summary
+
+- `screenshot: 'only-on-failure'` keeps image evidence focused on failures
+- `trace: 'on-first-retry'` captures deep diagnostics only when a retry is needed
+- `video: 'retain-on-failure'` preserves playback only for failed tests
+
 ---
 
-## CI/CD (Planned)
+## CI/CD
 
-The project will later include **GitHub Actions integration** to:
+The project includes a basic **GitHub Actions** workflow in [.github/workflows/playwright-ci.yml](.github/workflows/playwright-ci.yml).
 
-- Run tests automatically
-- Generate reports
-- Publish pass/fail feedback
+The workflow:
+
+- installs Node.js dependencies with `npm ci`
+- installs Playwright browsers and Linux dependencies with `npx playwright install --with-deps`
+- executes the Playwright suite in CI with `npx playwright test`
+- publishes the HTML report and raw `test-results` as GitHub Actions artifacts
+
+The workflow runs on:
+
+- pushes to `main`
+- pull requests targeting `main`
+- manual execution through `workflow_dispatch`
+
+Published artifacts are useful for:
+
+- reviewing the Playwright HTML report after CI execution
+- downloading screenshots, traces, and retained videos from failed runs
+- investigating failures without rerunning locally
 
 ---
 

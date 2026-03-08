@@ -45,7 +45,7 @@ const config = {
   // Media settings
   media: {
     screenshot: process.env.SCREENSHOT_ON_FAILURE || 'only-on-failure',
-    video: process.env.VIDEO_MODE || 'off',
+    video: process.env.VIDEO_MODE || 'retain-on-failure',
     trace: process.env.TRACE_MODE || 'on-first-retry',
   },
 
