@@ -41,6 +41,32 @@ class LoginPage extends BasePage {
     await this.submit();
   }
 
+  async waitForErrorMessage() {
+    await this.errorMessage.waitFor({ state: 'visible' });
+  }
+
+  async getErrorMessageText() {
+    return (await this.errorMessage.textContent())?.trim();
+  }
+
+  async getUsernameValidationMessage() {
+    return this.usernameInput.evaluate(input => input.validationMessage);
+  }
+
+  async getPasswordValidationMessage() {
+    return this.passwordInput.evaluate(input => input.validationMessage);
+  }
+
+  async isUsernameMarkedInvalid() {
+    const className = await this.usernameInput.getAttribute('class');
+    return className?.includes('is-invalid') || false;
+  }
+
+  async isPasswordMarkedInvalid() {
+    const className = await this.passwordInput.getAttribute('class');
+    return className?.includes('is-invalid') || false;
+  }
+
   get loginPath() {
     return URLS.login;
   }
